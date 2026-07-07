@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #0a0a0a;
+  background: radial-gradient(ellipse at top, #fff9a8 0%, #ffeb3b 20%, #fff9f0 60%, #ffffff 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.dark body {
+  color: #f7f7f4;
+  background: radial-gradient(ellipse at top, #2b0243 0%, #3b0a5a 40%, #050505 100%);
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+/* Removed image background in favor of CSS gradient for the site-wide background */
