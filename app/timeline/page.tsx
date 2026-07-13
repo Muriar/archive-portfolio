@@ -1,4 +1,4 @@
-import { Skills } from "@/components/sections/timeline";
+import { Timeline} from "@/components/sections/timeline";
 import { SiteHeader } from "@/components/site-header";
 
 export default function TimelinePage() {
