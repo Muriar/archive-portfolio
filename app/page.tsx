@@ -1,5 +1,5 @@
 import Menu from "@/components/sections/menu";
-import { SiteHeader } from "@/components/site-header";
+import App  from "@/components/site-header";
 import { Footer } from "@/components/sections/footer";
 
 export default function MenuPage() {
@@ -16,7 +16,7 @@ export default function MenuPage() {
     <div className="absolute top-1/4 left-1/4 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
     <div className="absolute bottom-1/4 right-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-indigo-300/10 blur-[150px] pointer-events-none" />
 
-      <SiteHeader />
+      <App />
       <Menu />
       <Footer />
     </main>

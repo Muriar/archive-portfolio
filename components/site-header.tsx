@@ -1,5 +1,5 @@
+import react from 'react';
 import CardNav from './sections/CardNav';
-import logo from './logo.svg';
 
 const App = () => {
   const items = [
@@ -35,15 +35,17 @@ const App = () => {
 
   return (
     <CardNav
-      logo={logo}
+      logo="/MyLogo.png"
       logoAlt="Company Logo"
       items={items}
-      baseColor="#fff"
-      menuColor="#000"
+      baseColor="#000"
+      menuColor="#fff"
       buttonBgColor="#111"
       buttonTextColor="#fff"
       ease="power3.out"
-  theme="light"
+  theme="dark"
 />
   );
 };
+
+export default App; 
