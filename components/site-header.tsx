@@ -1,11 +1,10 @@
-import react from 'react';
 import CardNav from './sections/CardNav';
 
 const App = () => {
   const items = [
     {
-      label: "About",
-      bgColor: "#1B1722",
+      label: "Home",
+      bgColor: "linear-gradient(to right, #4ddf9e, #3db2bc)",
       textColor: "#fff",
       links: [
         { label: "Company", ariaLabel: "About Company" },
