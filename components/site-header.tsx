@@ -4,31 +4,52 @@ const App = () => {
   const items = [
     {
       label: "Home",
+      description: "KEMBALI",
       bgColor: "linear-gradient(to right, #4ddf9e, #3db2bc)",
       textColor: "#fff",
-      links: [
-        { label: "Company", ariaLabel: "About Company" },
-        { label: "Careers", ariaLabel: "About Careers" }
-      ]
+      href:"/"
     },
     {
-      label: "Projects", 
+      label: "PROFIL", 
+      description: "SIAPAKAH AKU?",
       bgColor: "#2F293A",
       textColor: "#fff",
-      links: [
-        { label: "Featured", ariaLabel: "Featured Projects" },
-        { label: "Case Studies", ariaLabel: "Project Case Studies" }
-      ]
+      href:"/profil"
     },
     {
-      label: "Contact",
+      label: "SKILLS",
+      description: "APA YANG BISA AKU LAKUKAN?",
       bgColor: "#2F293A", 
       textColor: "#fff",
-      links: [
-        { label: "Email", ariaLabel: "Email us" },
-        { label: "Twitter", ariaLabel: "Twitter" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn" }
-      ]
+      href:"/skills" 
+    },
+    {
+      label: "JEJAK DIGITAL",
+      description: "APA YANG SUDAH AKU LAKUKAN?",
+      bgColor: "#2F293A", 
+      textColor: "#fff",
+      href:"/timeline"  
+    },
+    {
+      label: "KARYA",
+      description: "APA YANG SUDAH AKU BUAT?",
+      bgColor: "#2F293A", 
+      textColor: "#fff",
+      href:"/projects"  
+    },
+    {
+      label: "KONTAK",
+      description: "FOLLOW IGKU DONG :)",
+      bgColor: "#2F293A",
+      textColor: "#fff",
+      href:"/contact"
+    },
+    {
+      label: "INFO",
+      description: "APA YANG AKU LAKUKAN?",
+      bgColor: "#2F293A",
+      textColor: "#fff",
+      href:"/info"
     }
   ];
 
