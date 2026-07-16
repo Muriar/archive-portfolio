@@ -224,13 +224,12 @@ const CardNav: React.FC<CardNavProps> = ({
   };
 
   return (
-    <div className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] z-[99] top-[1.2em] md:top-[2em] ${className}`}>
+    <div className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] z-[99] top-[1.2em] md:top-[2em] ${className}`}>
 
       {/* logonya */}
       {logo && (
-        <img src={logo} alt={logoAlt} 
-    // Menggunakan class 'logo-standalone' agar tetap ikut dalam animasi masuk (stagger) GSAP
-    className="logo-standalone absolute left-0 top-[6px] z-[1] h-[36px] w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05]"
+        <img src={logo} alt={logoAlt}
+    className="logo absolute left-0 top-[6px] z-[1] h-[36px] rounded-xl border-neutral-700/50 bg-neutral-900/40 w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05] hover:border-neutral-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.12)] shadow-md"
   />
 )}
       {/* Kontainer Navigasi Utama */}
