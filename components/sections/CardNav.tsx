@@ -123,11 +123,15 @@ const CardNav: React.FC<CardNavProps> = ({
     tlRef.current = tl;
 
     {/* efek fade up dan stagger tombol menu  */}
+    const parent = navRef.current?.parentElement;
     const navEl = navRef.current;
     const lines = navRef.current?.querySelectorAll('.hamburger-line');
+    const logo = parent?.querySelector('.logo')
     if (navEl && lines) {
       const entranceTl = gsap.timeline({delay: 0.25});
-      entranceTl.fromTo(navEl,
+      const outerElement = [navEl, logo].filter(Boolean);
+
+      entranceTl.fromTo(outerElement,
         {
           y: -15,
           opacity: 0,
@@ -221,6 +225,14 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] z-[99] top-[1.2em] md:top-[2em] ${className}`}>
+
+      {/* logonya */}
+      {logo && (
+        <img src={logo} alt={logoAlt} 
+    // Menggunakan class 'logo-standalone' agar tetap ikut dalam animasi masuk (stagger) GSAP
+    className="logo-standalone absolute left-0 top-[6px] z-[1] h-[36px] w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05]"
+  />
+)}
       {/* Kontainer Navigasi Utama */}
       <nav
         ref={navRef}
@@ -228,7 +240,7 @@ const CardNav: React.FC<CardNavProps> = ({
           backgroundColor: baseColor,
 
         }}
-        className={`card-nav ${isExpanded ? 'open' : ''} mx-auto block w-[48px] h-[48px] rounded-[9999px] p-0 shadow-2xl relative overflow-hidden border border-neutral-800/80 backdrop-blur-xl will-change-[height,width,border-radius]`}
+        className={`card-nav ${isExpanded ? 'open' : ''} mx-auto block w-[48px] h-[48px] rounded-[9999px] p-0 shadow-2xl relative z-[10] overflow-hidden border border-neutral-800/80 backdrop-blur-xl will-change-[height,width,border-radius]`}
       >
         {/* Bar Bagian Atas */}
         <div className="card-nav-top absolute left-0 top-0 h-[48px] w-full flex items-center justify-between px-3 py-2 z-[2]">
@@ -259,6 +271,8 @@ const CardNav: React.FC<CardNavProps> = ({
             const isFullWidth = (item as any).fullWidth;
 
             return (
+              //isi warna tabnya
+
               <a
                 key={`${item.href}-${idx}`}
                 href={item.href}
@@ -271,9 +285,13 @@ const CardNav: React.FC<CardNavProps> = ({
                   }`}
                 ref={setCardRef(idx)}
               >
+                {/*label tabnya*/}
+
                 <div className="nav-card-label font-semibold tracking-wide text-[14px] md:text-[15px] filter brightness-110">
                   {item.label}
                 </div>
+
+                {/*deskripsi tabnya*/}
 
                 {item.description && (
                   <div className="nav-card-desc text-[11px] opacity-70 font-normal leading-tight mt-1">
