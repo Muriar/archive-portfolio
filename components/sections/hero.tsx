@@ -48,7 +48,7 @@ export function Hero() {
                 "0 0 30px rgba(255, 255, 255, 0.04), 0 0 60px rgba(255, 255, 255, 0.01)"  // Kembali ke awal
               ]
             }}
-            transition={{
+            transition={{           //ini animasi glownya
               duration: 4,          // Durasi 4 detik
               repeat: Infinity,     // Ngulang
               ease: "easeInOut"

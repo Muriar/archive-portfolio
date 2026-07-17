@@ -48,7 +48,7 @@ const App = () => {
       bgColor: "rgba(188, 197, 206, 0.35) 0%, rgba(146, 158, 173, 0.35) 98%",
       borderGradient: "linear-gradient(-180deg, #BBCAE2 20%, #93A5CF 98%)",
       textColor: "#fff",
-      href:"/Contact"
+      href:"/contact"
     },
     {
       label: "INFO",
@@ -56,7 +56,7 @@ const App = () => {
       bgColor: "rgba(41, 50, 60, 0.35) 0%, rgba(72, 85, 99, 0.35) 100%)",
       borderGradient: "linear-gradient(60deg, #29323c 0%, #485563 100%)",
       textColor: "#fff",
-      href:"/info",
+      href:"/Info",
       fullWidth: true
     }
   ];
