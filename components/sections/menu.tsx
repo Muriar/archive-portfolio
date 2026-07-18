@@ -39,7 +39,12 @@ export default function Menu() {
 
   return (
     <section id="menu" className="border-b border-neutral-200 px-5 py-24 dark:border-neutral-800 sm:px-6 lg:px-8 bg-neutral-950">
-      <div className="mx-auto max-w-6xl">
+      <motion.div  className="mx-auto max-w-6xl"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <SectionHeading eyebrow="My Portfolio" title="Beyond Creativity">
          Saran dong ditambahin apaan lagi biar lebih menarik dan lengkap. 
          btw jangan buka di desktop ya, blom jadi soalnya versi desktopnya.
@@ -47,7 +52,7 @@ export default function Menu() {
         
         <motion.div
           className="mx-auto mt-12 grid max-w-xl grid-cols-2 gap-3"
-          variants={stagger}
+          variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -81,7 +86,7 @@ export default function Menu() {
             );
           })}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
