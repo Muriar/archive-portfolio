@@ -1,4 +1,4 @@
-import { Timeline} from "@/components/sections/timeline";
+import { Timeline } from "@/components/sections/timeline";
 import App from "@/components/site-header";
 
 export default function TimelinePage() {
