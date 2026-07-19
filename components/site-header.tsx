@@ -40,7 +40,7 @@ const App = () => {
       bgColor: "rgba(255, 88, 88, 0.35) 0%, rgba(240, 152, 25, 0.35) 100%", 
       borderGradient: "linear-gradient(-60deg, #FF5858 0%, #F09819 100%)",
       textColor: "#fff",
-      href:"/projects"  
+      href:"/Karya"  
     },
     {
       label: "KONTAK",
