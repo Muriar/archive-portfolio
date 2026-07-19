@@ -89,7 +89,7 @@ export function Hero() {
               </p>
             </div>
           </motion.div>
-        </motion.div>
+       </motion.div>
 
         <motion.p
           variants={fadeUp}

@@ -1,92 +1,116 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { menu } from "@/lib/data";
 import { fadeUp, stagger } from "@/lib/motion";
-import { SectionHeading } from "@/components/section-heading";
+import { useRef } from "react";
+import BgParticle from "./bgParticle";
 
-export default function Menu() {
-  // 🛠️ PEMETAAN WARNA INNER GLOW GRADIENT (SESUAI GAMBAR REFERENSI ANDA)
-  const getMenuStyles = (label: string) => {
-    switch (label) {
-      case "Profil": 
-         return "border-blue-500/30 bg-gradient-to-b from-blue-950/20 to-neutral-950/90 text-blue-400 shadow-[inset_0_0_20px_rgba(59,130,246,0.15)]";
-      case "Skills": 
-        return "border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 to-neutral-950/90 text-emerald-400 shadow-[inset_0_0_20px_rgba(16,185,129,0.15)]";
-      case "Timeline": 
-        return "border-purple-500/30 bg-gradient-to-b from-purple-950/20 to-neutral-950/90 text-purple-400 shadow-[inset_0_0_20px_rgba(168,85,247,0.15)]";
-      case "Projects": 
-        return "border-orange-500/30 bg-gradient-to-b from-orange-950/20 to-neutral-950/90 text-orange-400 shadow-[inset_0_0_20px_rgba(249,115,22,0.15)]";
-      case "Contact": 
-        return "border-white/30 bg-gradient-to-b from-white/20 to-neutral-950/90 text-white shadow-[inset_0_0_20px_rgba(255,255,255,0.15)]";
-      default: 
-        return "border-neutral-800 bg-neutral-900 text-white";
-    }
-  };
+// ==========================================
+// 1. AREA KUSTOMISASI KONTEN SETIAP SESI
+// ==========================================
 
-  // PEMETAAN SOFTGLOW TAMBAHAN SAAT CURSOR DIARAHKAN (HOVER EFFECT)
-  const getHoverGlow = (label: string) => {
-    switch (label) {
-      case "Profil": return "rgba(59, 130, 246, 0.3)";
-      case "Skills": return "rgba(16, 185, 129, 0.3)";
-      case "Timeline": return "rgba(168, 85, 247, 0.3)";
-      case "Projects": return "rgba(249, 115, 22, 0.3)";
-      case "Contact": return "rgba(255, 255, 255, 0.15)";
-      default: return "rgba(255, 255, 255, 0.1)";
+function SectionSatu() {
+  return (
+    <motion.h1 variants={fadeUp} className="text-3xl sm:text-5xl font-semibold text-stone-50">
+      Hello, Welcome To My Website
+    </motion.h1>
+  );
+}
+
+function SectionDua() {
+  return (
+    <motion.div variants={fadeUp} className="space-y-4">
+      <h2 className="text-3xl font-semibold text-stone-50">Session ini akan berisi tentang foto foto</h2>
+      {/* TAMPILKAN ELEMEN FOTO ANDA DI SINI */}
+      <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-6">
+        <div className="h-24 bg-neutral-800 rounded animate-pulse" />
+        <div className="h-24 bg-neutral-800 rounded animate-pulse" />
+        <div className="h-24 bg-neutral-800 rounded animate-pulse" />
+      </div>
+    </motion.div>
+  );
+}
+
+function SectionTiga() {
+  return (
+    <motion.div variants={fadeUp}>
+      <h2 className="text-3xl font-semibold text-stone-50">Session ini berisi background</h2>
+      {/* TAMPILKAN ELEMEN DEMO BACKGROUND DI SINI */}
+    </motion.div>
+  );
+}
+
+function SectionEmpat() {
+  return (
+    <motion.div variants={fadeUp} className="space-y-4">
+      <h2 className="text-3xl font-semibold text-stone-50">Berisi tentang playground yang bisa dimainkan</h2>
+      {/* TAMPILKAN ELEMEN INTERAKTIF / GAME DI SINI */}
+      <button className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-500 transition">
+        Coba Playground
+      </button>
+    </motion.div>
+  );
+}
+
+// ==========================================
+// 2. KOMPONEN UTAMA (STRUKTUR HALAMAN)
+// ==========================================
+
+const Intro = [
+  { id: 1, component: <SectionSatu /> },
+  { id: 2, component: <SectionDua /> },
+  { id: 3, component: <SectionTiga /> },
+  { id: 4, component: <SectionEmpat /> },
+];
+
+export default function MenuPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToNext = (index: number) => {
+    if (index < Intro.length - 1 && containerRef.current) {
+      const nextSession = containerRef.current.children[index + 1];
+      nextSession.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="menu" className="border-b border-neutral-200 px-5 py-24 dark:border-neutral-800 sm:px-6 lg:px-8 bg-neutral-950">
-      <motion.div  className="mx-auto max-w-6xl"
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <SectionHeading eyebrow="My Portfolio" title="Beyond Creativity">
-         Saran dong ditambahin apaan lagi biar lebih menarik dan lengkap. 
-         btw jangan buka di desktop ya, blom jadi soalnya versi desktopnya.
-        </SectionHeading>
-        
-        <motion.div
-          className="mx-auto mt-12 grid max-w-xl grid-cols-2 gap-3"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+    <div 
+      ref={containerRef}
+      className="relative z-10 h-screen w-full overflow-y-auto scroll-smooth snap-y snap-mandatory bg-[#0F0E0E]"
+    >
+      {Intro.map((section, index) => (
+        <section
+          key={section.id}
+          onClick={() => scrollToNext(index)}
+          /* 1. Harus 'relative' dan 'overflow-hidden' agar partikel mengunci di dalam section ini saja */
+          className="relative h-screen w-full flex items-center justify-center snap-start cursor-pointer select-none px-6 overflow-hidden"
         >
-          {menu.map((item, index) => {
-            const currentStyle = getMenuStyles(item.label);
-            const glowColor = getHoverGlow(item.label);
+          {/* 2. Selipkan BgParticle di sini. Dia akan otomatis berada di latar belakang section ini */}
+          <BgParticle />
 
-            return (
-              <Link key={item.label} href={item.href} className="contents">
-                <motion.div
-                  variants={fadeUp}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  
-                  // Efek Angkat dan Pendaran Eksternal saat Cursor diarahkan / disentuh
-                  initial={{ boxShadow: "0 0 0px rgba(0,0,0,0)", y: 0 }}
-                  whileHover={{ 
-                    boxShadow: `0 0 25px ${glowColor}, 0 0 50px ${glowColor}`,
-                    y: -2,
-                    transition: { duration: 0.2 }
-                  }}
-                  className={`group relative flex min-h-[85px] items-center justify-center rounded-2xl border px-4 py-4 text-center backdrop-blur-md cursor-pointer transition-all duration-300
-                    ${currentStyle}
-                    ${index === 4 ? "col-span-2" : ""}`}
-                >
-                  <h3 className="text-xs font-sans font-semibold tracking-wide transition-all duration-300 group-hover:tracking-wider">
-                    {item.label}
-                  </h3>
-                </motion.div>
-              </Link>
-            );
-          })}
-        </motion.div>
-      </motion.div>
-    </section>
+          {/* 3. Berikan z-10 pada teks agar teks berada di atas partikel secara mutlak */}
+          <motion.div
+            className="text-center w-full max-w-4xl relative z-10"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+          >
+            {/* Merender komponen kustom sesuai sesinya */}
+            {section.component}
+            
+            {/* Petunjuk navigasi kecil di bawah */}
+            {index < Intro.length - 1 && (
+              <motion.p 
+                variants={fadeUp}
+                className="text-xs text-neutral-500 tracking-widest mt-12 uppercase pointer-events-none"
+              >
+                Klik atau Scroll untuk Lanjut
+              </motion.p>
+            )}
+          </motion.div>
+        </section>
+      ))}
+    </div>
   );
 }
