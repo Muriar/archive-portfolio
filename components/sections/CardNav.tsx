@@ -129,7 +129,22 @@ const CardNav: React.FC<CardNavProps> = ({
     const logo = parent?.querySelector('.logo')
     if (navEl && lines) {
       const entranceTl = gsap.timeline({delay: 0.25});
-      const outerElement = [navEl, logo].filter(Boolean);
+      const outerElement = [navEl].filter(Boolean);
+
+    if (logo)
+      entranceTl.fromTo(logo,{
+        y: 25,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.1,
+        ease: "power3.out",
+        clearProps: "transform,opacity"
+      }
+    
+    )
 
       entranceTl.fromTo(outerElement,
         {

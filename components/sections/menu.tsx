@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 import { useRef } from "react";
 import BgParticle from "./bgParticle";
+import React from "react";
+
+interface menuProps {
+  onSectionChange?: (index: number) => (void);
+}
 
 // ==========================================
 // 1. AREA KUSTOMISASI KONTEN SETIAP SESI
@@ -63,9 +68,37 @@ const Intro = [
   { id: 4, component: <SectionEmpat /> },
 ];
 
-export default function MenuPage() {
+export default function MenuPage({ onSectionChange }: menuProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // --- TAMBAHKAN EFFECT INI ---
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Ambil indeks section dari atribut HTML 'data-index'
+            const idx = Number(entry.target.getAttribute("data-index"));
+            if (onSectionChange) {
+              onSectionChange(idx);
+            }
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6, // Section dianggap aktif jika 60% areanya terlihat di layar
+      }
+    );
+
+    // Daftarkan semua anak section untuk dipantau
+    Array.from(container.children).forEach((child) => observer.observe(child));
+
+    return () => observer.disconnect();
+  }, [onSectionChange]);
   const scrollToNext = (index: number) => {
     if (index < Intro.length - 1 && containerRef.current) {
       const nextSession = containerRef.current.children[index + 1];
@@ -82,6 +115,7 @@ export default function MenuPage() {
         <section
           key={section.id}
           onClick={() => scrollToNext(index)}
+          data-index={index}
           /* 1. Harus 'relative' dan 'overflow-hidden' agar partikel mengunci di dalam section ini saja */
           className="relative h-screen w-full flex items-center justify-center snap-start cursor-pointer select-none px-6 overflow-hidden"
         >
