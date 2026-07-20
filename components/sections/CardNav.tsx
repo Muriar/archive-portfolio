@@ -1,5 +1,7 @@
 "use client";
 
+import { useTransitionRouter } from "@/app/providers"; 
+import Link from 'next/link';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
@@ -36,6 +38,7 @@ const CardNav: React.FC<CardNavProps> = ({
   baseColor = 'rgba(10, 10, 10, 0.4)', // Default hitam transparan kaca
   menuColor = '#fff', // Warna tombol hamburger
 }) => {
+  const customRouter = useTransitionRouter(); 
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -234,6 +237,17 @@ const CardNav: React.FC<CardNavProps> = ({
     }
   };
 
+  // Letakkan ini tepat di bawah blok fungsi toggleMenu() Anda
+const tutupMenuNavigasi = () => {
+  const tl = tlRef.current;
+  if (isExpanded && tl && !isAnimatingRef.current) {
+    isAnimatingRef.current = true;
+    setIsHamburgerOpen(false);
+    tl.reverse();
+    window.setTimeout(() => { isAnimatingRef.current = false; }, 800);
+  }
+};
+
   const setCardRef = (i: number) => (el: any) => {
     if (el) cardsRef.current[i] = el;
   };
@@ -287,9 +301,15 @@ const CardNav: React.FC<CardNavProps> = ({
             return (
               //isi warna tabnya
 
-              <a
+              <Link
                 key={`${item.href}-${idx}`}
                 href={item.href}
+                prefetch={true}
+                onClick={(e) => {
+                e.preventDefault(); // Mencegah Next.js pindah halaman secara instan
+                 tutupMenuNavigasi(); // Fungsi menutup navbar GSAP Anda
+                 customRouter.navigasiKe(item.href); // Jalankan tirai naik terlebih dahulu
+                }}
                 style={{
                   background:`linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)) padding-box, ${item.borderGradient || item.borderColor || 'transparent'} border-box`,
                   border:'2px solid transparent',
@@ -312,7 +332,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     {item.description}
                   </div>
                 )}
-              </a>
+              </Link>
             );
           })}
         </div>
