@@ -79,7 +79,7 @@ export function Hero() {
 
             {/* Bagian Bawah: Teks Deskripsi */}
             <div className="text-center w-full px-2">
-              <h3 className="text-2xl font-serif font-medium mb-3 text-neutral-950 dark:text-stone-50">
+              <h3 className="text-1xl font-serif font-medium mb-3 text-neutral-950 dark:text-stone-50">
                 Halo!!
               </h3>
               <p className="text-base leading-7 text-neutral-600 dark:text-neutral-300">
@@ -89,7 +89,7 @@ export function Hero() {
               </p>
             </div>
           </motion.div>
-        </motion.div>
+       </motion.div>
 
         <motion.p
           variants={fadeUp}
@@ -113,15 +113,12 @@ export function Hero() {
             delay: 0.5 // delay
            }}
           >
-          <h4 className="text-2xl font-serif font-medium mb-4 tracking-wide">
+          <h4 className="text-1xl font-serif font-medium mb-4 tracking-wide">
             Fortuna Audaces Iuvat
           </h4>
           <div className="w-full border-t border-neutral-200 dark:border-neutral-800 my-4 opacity-60" />
           <p className="text-sm md:text-base leading-relaxed text-neutral-500 dark:text-neutral-400 italic font-light px-2 md:px-4">
-            "Berarti 'Keberuntungan berpihak pada mereka yang berani'. Kalimat ini menjadi landasan pengingat 
-            bahwa dalam dunia kreatif dan teknologi yang terus berevolusi, keberanian untuk mencoba hal baru, 
-            menghadapi kegagalan, dan keluar dari zona nyaman adalah kunci utama untuk menemukan peluang serta 
-            menciptakan karya visual yang luar biasa."
+            "bermakna bahwa keberuntungan dan kesuksesan bukanlah hal pasif, melainkan hasil nyata dari keberanian seseorang dalam mengambil risiko dan bertindak tegas. Semboyan ini menegaskan bahwa takdir baik akan memihak pada mereka yang berani menghadapi ketakutan, karena peluang besar hanya tercipta melalui aksi nyata, bukan keraguan."
           </p>
         </motion.div>
         
@@ -129,6 +126,13 @@ export function Hero() {
           variants={fadeUp}
           className="w-full border-t border-neutral-200 dark:border-neutral-800 my-2"
         />
+
+        <motion.p
+          variants={fadeUp}
+          className="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500 dark:text-neutral-400 mt-6 -mb-2"
+        >
+          website masih berada dalam tahap pengembangan
+        </motion.p>
         
       </motion.div>
     </section>

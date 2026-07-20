@@ -114,29 +114,39 @@ export const skills = [
 
 export const timeline = [
   {
-    date: "2026-Sekarang ~(6 Bulan)",
+    date: "2026 - Sekarang ~(6 Bulan)",
     title: "Design Graphics",
     description:
       "Dari video, saya mulai tertarik pada sisi visual yang lebih luas. Menggunakan Canva dan Photoshop, saya mempelajari prinsip-prinsip dasar desain seperti tipografi, komposisi, dan hierarki visual — fondasi yang membentuk cara saya melihat dan menciptakan sebuah karya.",
-    color: "hover:border-purple-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]", 
-    darkColor: "dark:hover:border-purple-500 dark:hover:shadow-[0_0_50px_rgba(168,85,247,0.12)]",
+    borderColor: "rgba(168, 85, 247, 0.25)", // Ungu
+    accentColor: "text-purple-400 group-hover:text-purple-300",
+    glowColor: "rgba(168, 85, 247, 0.12)"
   },
   {
-    date: "2024-2026 ~(2 Tahun)",
+    date: "2024 - 2026 ~(2 Tahun)",
     title: "Motion Graphics",
     description:
-      "Saya mendalami motion graphics menggunakan After Effects dan Alight Motion. Belajar menggerakkan elemen visual dengan memperhatikan timing dan transisi — karena bagi saya, animasi yang baik bukan sekadar bergerak, tapi bercerita."
+      "Saya mendalami motion graphics menggunakan After Effects dan Alight Motion. Belajar menggerakkan elemen visual dengan memperhatikan timing dan transisi — karena bagi saya, animasi yang baik bukan sekadar bergerak, tapi bercerita.",
+    borderColor: "rgba(236, 72, 153, 0.25)", // Pink
+    accentColor: "text-pink-400 group-hover:text-pink-300",
+    glowColor: "rgba(236, 72, 153, 0.12)"
   },
   {
-    date: "2024-2026 ~(2 Tahun)",
+    date: "2024 - 2026 ~(2 Tahun)",
     title: "Web Design",
     description:
-      "Ketertarikan saya terhadap cara kerja web mendorong saya untuk mulai belajar dari nol. Dimulai dari HTML & CSS, kemudian berkembang ke JavaScript, Tailwind CSS, TypeScript, PHP, dan Python. Perjalanan ini mengajarkan saya bahwa membangun sebuah website bukan hanya soal kode, tapi juga soal pengalaman pengguna."
+      "Ketertarikan saya terhadap cara kerja web mendorong saya untuk mulai belajar dari nol. Dimulai dari HTML & CSS, kemudian berkembang ke JavaScript, Tailwind CSS, TypeScript, PHP, dan Python. Perjalanan ini mengajarkan saya bahwa membangun sebuah website bukan hanya soal kode, tapi juga soal pengalaman pengguna.",
+    borderColor: "rgba(20, 184, 166, 0.25)", // Teal
+    accentColor: "text-teal-400 group-hover:text-teal-300",
+    glowColor: "rgba(20, 184, 166, 0.12)"
   },
   {
-    date: "2026-Sekarang ~(4 Bulan)",
+    date: "2026 - Sekarang ~(4 Bulan)",
     title: "Cyber Security",
     description:
-      "Saat ini saya sedang meraba lebih dalam tentang ethical hacking dan penetration testing, karena saya percaya bahwa memahami cara kerja serangan adalah kunci untuk membangun pertahanan yang efektif. Btw saya masih pemula banget, jadi jangan terlalu berharap banyak ya."
+      "Saat ini saya sedang meraba lebih dalam tentang ethical hacking dan penetration testing, karena saya percaya bahwa memahami cara kerja serangan adalah kunci untuk membangun pertahanan yang efektif. Btw saya masih pemula banget, jadi jangan terlalu berharap banyak ya.",
+    borderColor: "rgba(245, 158, 11, 0.25)", // Amber/Kuning Oranye
+    accentColor: "text-amber-400 group-hover:text-amber-300",
+    glowColor: "rgba(245, 158, 11, 0.12)"
   }
 ];

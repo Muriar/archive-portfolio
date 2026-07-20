@@ -8,17 +8,20 @@ type MotionWrapperProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Optional override for framer-motion variants */
+  variants?: any;
 };
 
 export function MotionWrapper({
   children,
   className,
-  delay = 0
+  delay = 0,
+  variants = fadeUp
 }: MotionWrapperProps) {
   return (
     <motion.div
       className={className}
-      variants={fadeUp}
+      variants={variants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./global.css";
+// 1. Impor komponen pembungkus transisi
+import { TerapkanTransisi } from "./providers"; 
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={inter.variable}>{children}</body>
+      <body className={`${inter.variable} antialiased bg-[#0d0d0d] text-stone-50`}>
+        {/* 2. Bungkus children di sini */}
+        <TerapkanTransisi>
+          {children}
+        </TerapkanTransisi>
+      </body>
     </html>
   );
 }
