@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { skills } from "@/lib/data";
 import { fadeUp, stagger } from "@/lib/motion";
 import { SectionHeading } from "../section-heading";
+import Image from "next/image";
 
 export function Skills() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
@@ -21,7 +22,7 @@ export function Skills() {
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}>
         <SectionHeading eyebrow="Skills" title="Software">
-        "Kumpulan software yang menyelamatkan proyek saya dari revisi tiada akhir. Di sinilah imajinasi diubah menjadi aset visual siap pakai, lengkap dengan tumpukan renderan di jam 3 pagi (tidak usah mandi)."
+        &quot;Kumpulan software yang menyelamatkan proyek saya dari revisi tiada akhir. Di sinilah imajinasi diubah menjadi aset visual siap pakai, lengkap dengan tumpukan renderan di jam 3 pagi (tidak usah mandi).&quot;
         </SectionHeading>
         <motion.div
           className="mx-auto mt-12 grid max-w-xl grid-cols-1 gap-3"
@@ -80,7 +81,7 @@ export function Skills() {
                       {/* Logo Aplikasi */}
                       {skill.logo && (
                         <div className="h-14 w-14 mb-3 flex items-center justify-center p-1 bg-neutral-100 dark:bg-neutral-800 rounded-xl overflow-hidden shadow-inner">
-                          <img 
+                          <Image 
                             src={skill.logo} 
                             alt={`${skill.name} Logo`} 
                             className="h-full w-full object-contain"

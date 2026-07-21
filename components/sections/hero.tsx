@@ -118,7 +118,7 @@ export function Hero() {
           </h4>
           <div className="w-full border-t border-neutral-200 dark:border-neutral-800 my-4 opacity-60" />
           <p className="text-sm md:text-base leading-relaxed text-neutral-500 dark:text-neutral-400 italic font-light px-2 md:px-4">
-            "bermakna bahwa keberuntungan dan kesuksesan bukanlah hal pasif, melainkan hasil nyata dari keberanian seseorang dalam mengambil risiko dan bertindak tegas. Semboyan ini menegaskan bahwa takdir baik akan memihak pada mereka yang berani menghadapi ketakutan, karena peluang besar hanya tercipta melalui aksi nyata, bukan keraguan."
+            &quot;bermakna bahwa keberuntungan dan kesuksesan bukanlah hal pasif, melainkan hasil nyata dari keberanian seseorang dalam mengambil risiko dan bertindak tegas. Semboyan ini menegaskan bahwa takdir baik akan memihak pada mereka yang berani menghadapi ketakutan, karena peluang besar hanya tercipta melalui aksi nyata, bukan keraguan.&quot;
           </p>
         </motion.div>
         

@@ -25,7 +25,7 @@ export function Contact() {
               viewport={{ once: true, margin: "-80px" }}
             >
               <SectionHeading eyebrow="Contact" title="Tell me what you need">
-                Send a DM or email if you have a project in mind, or just want to say hi. I'm always online.
+                Send a DM or email if you have a project in mind, or just want to say hi. I&apos;m always online.
               </SectionHeading>
             </motion.div>
 
