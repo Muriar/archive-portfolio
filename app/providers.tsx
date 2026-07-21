@@ -20,7 +20,7 @@ export function TerapkanTransisi({ children }: { children: React.ReactNode }) {
 
     // 1. Ambil data halaman tujuan di latar belakang secara agresif
     router.prefetch(href); 
-    
+
     // 2. Naikkan tirai menutup layar
     setSedangTransisi(true); 
 
@@ -28,10 +28,10 @@ export function TerapkanTransisi({ children }: { children: React.ReactNode }) {
     setTimeout(() => {
       router.push(href);
       
-      // 4. Setelah rute didorong, beri jeda 100ms agar halaman baru siap, lalu turunkan tirai
+      // 4. Setelah rute didorong, beri jeda 250ms agar halaman baru siap, lalu turunkan tirai
       setTimeout(() => {
         setSedangTransisi(false);
-      }, 100);
+      }, 250);
     }, 600); 
   };
 

@@ -2,8 +2,9 @@
 
 import { useTransitionRouter } from "@/app/providers"; 
 import Link from 'next/link';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import Image from "next/image";
 
 // Struktur data Item Navigasi sesuai kiriman dari SiteHeader
 interface NavItem {
@@ -27,6 +28,8 @@ interface CardNavProps {
   menuColor?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
+  width?: number;
+  height?: number;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -35,6 +38,8 @@ const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = 'Logo',
   items = [],
+  width = 36,
+  height = 36,
   baseColor = 'rgba(10, 10, 10, 0.4)', // Default hitam transparan kaca
   menuColor = '#fff', // Warna tombol hamburger
 }) => {
@@ -76,50 +81,42 @@ const CardNav: React.FC<CardNavProps> = ({
     return 50;
   };
 
-  const createTimeline = () => {
-    const navEl = navRef.current;
-    if (!navEl) return null;
+  const createTimeline = useCallback(() => {
+  const navEl = navRef.current;
+  if (!navEl) return null;
 
-    // Reset awal ke tombol bulat kecil
-    gsap.set(navEl, { 
-      height: 48, 
-      width: 48, 
-      borderRadius: "9999px", 
-      overflow: 'hidden' 
-    });
-    gsap.set(cardsRef.current, { y: 25, opacity: 0 });
+  gsap.set(navEl, { height: 48, width: 48, borderRadius: "9999px", overflow: 'hidden' });
+  gsap.set(cardsRef.current, { y: 25, opacity: 0 });
 
-    const tl = gsap.timeline({ 
-      paused: true,
-      onReverseComplete: () => setIsExpanded(false)
-    });
+  const tl = gsap.timeline({ 
+    paused: true,
+    onReverseComplete: () => setIsExpanded(false)
+  });
 
-    // TAHAP 1: Memanjang ke samping terlebih dahulu
-    tl.to(navEl, {
-      width: "100%", 
-      borderRadius: "16px", 
-      duration: 0.35,
-      ease: ease
-    });
+  tl.to(navEl, { 
+    width: "100%", 
+    borderRadius: "16px", 
+    duration: 0.35, 
+    ease: ease 
+  });
 
-    // TAHAP 2: Melebar ke bawah setelah pelebaran samping selesai
-    tl.to(navEl, {
-      height: "auto", 
-      duration: 0.45,
-      ease: ease
-    });
+  tl.to(navEl, { 
+    height: "auto", 
+    duration: 0.45, 
+    ease: ease
+   });
+  tl.to(cardsRef.current, {
+    y: 0, 
+    opacity: 1, 
+    duration: 0.3,
+    ease, 
+    stagger: 
+    0.04 
+   }, '-=0.25');
 
-    // TAHAP 3: Kartu muncul berurutan (Stagger)
-    tl.to(cardsRef.current, { 
-      y: 0, 
-      opacity: 1, 
-      duration: 0.3, 
-      ease, 
-      stagger: 0.04 
-    }, '-=0.25');
+  return tl;
+}, [ease]); // Masukkan kemudahan (ease) sebagai dependensi internalnya
 
-    return tl;
-  };
 
   useLayoutEffect(() => {
     const tl = createTimeline();
@@ -182,7 +179,7 @@ const CardNav: React.FC<CardNavProps> = ({
       tl?.kill();
       tlRef.current = null;
     };
-  }, [ease, items]); // Menambahkan dependency items jika data berubah
+  }, [ease, items, createTimeline]); // Menambahkan dependency items jika data berubah
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -209,7 +206,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isExpanded, items]);
+  }, [isExpanded, items, createTimeline]);
 
   const toggleMenu = () => {
     const tl = tlRef.current;
@@ -257,8 +254,12 @@ const tutupMenuNavigasi = () => {
 
       {/* logonya */}
       {logo && (
-        <img src={logo} alt={logoAlt}
-    className="logo absolute left-0 top-[6px] z-[1] h-[36px] rounded-xl border-neutral-700/50 bg-neutral-900/40 w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05] hover:border-neutral-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.12)] shadow-md"
+        <Image
+         src={logo} 
+         alt={logoAlt}
+         width={width}
+         height={height}
+         className="logo absolute left-0 top-[6px] z-[1] h-[36px] rounded-xl border-neutral-700/50 bg-neutral-900/40 w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05] hover:border-neutral-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.12)] shadow-md"
   />
 )}
       {/* Kontainer Navigasi Utama */}

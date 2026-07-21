@@ -1,6 +1,19 @@
+"use client";
+
 import CardNav from './sections/CardNav';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const App = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const semuaRute = ["/", "/Profil", "/skills", "/timeline", "/Karya", "/contact", "/Info"];
+    semuaRute.forEach((rute) => {
+      router.prefetch(rute);
+    });
+  }, [router]);
+
   const items = [
     {
       label: "Home",
