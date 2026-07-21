@@ -28,6 +28,8 @@ interface CardNavProps {
   menuColor?: string;
   buttonBgColor?: string;
   buttonTextColor?: string;
+  width?: number;
+  height?: number;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -36,6 +38,8 @@ const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = 'Logo',
   items = [],
+  width = 36,
+  height = 36,
   baseColor = 'rgba(10, 10, 10, 0.4)', // Default hitam transparan kaca
   menuColor = '#fff', // Warna tombol hamburger
 }) => {
@@ -250,8 +254,12 @@ const tutupMenuNavigasi = () => {
 
       {/* logonya */}
       {logo && (
-        <Image src={logo} alt={logoAlt}
-    className="logo absolute left-0 top-[6px] z-[1] h-[36px] rounded-xl border-neutral-700/50 bg-neutral-900/40 w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05] hover:border-neutral-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.12)] shadow-md"
+        <Image
+         src={logo} 
+         alt={logoAlt}
+         width={width}
+         height={height}
+         className="logo absolute left-0 top-[6px] z-[1] h-[36px] rounded-xl border-neutral-700/50 bg-neutral-900/40 w-auto object-contain transition-all duration-500 hover:-translate-y-0.5 hover:scale-[1.05] hover:border-neutral-400 hover:shadow-[0_0_35px_rgba(255,255,255,0.12)] shadow-md"
   />
 )}
       {/* Kontainer Navigasi Utama */}
