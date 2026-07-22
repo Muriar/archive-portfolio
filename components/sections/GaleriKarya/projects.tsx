@@ -5,17 +5,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion
-} from "framer-motion";
+import {motion, useReducedMotion  } from "framer-motion";
 import { CinematicLink } from "@/components/sections/GaleriKarya/cinematic-link";
-import {
-  galleryProjects,
-  type GalleryFilter,
-  getYouTubeEmbedUrl
-} from "@/lib/data";
+import { galleryProjects, type GalleryFilter } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -138,7 +130,7 @@ export function GalleryExperience() {
       />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 pb-16 pt-5 sm:px-6 lg:px-8">
-        <section className="relative flex min-h-[72svh] items-start pb-8 pt-12 sm:min-h-[90svh] sm:items-end sm:pb-14 sm:pt-4">
+        <section className="relative items-start pb- pt-12">
           <div className="max-w-4xl space-y-6">
             <p
               data-hero-meta
@@ -191,7 +183,7 @@ export function GalleryExperience() {
               <h2
                 className="text-display text-1xl uppercase tracking-[0.15em] text-stone-400"
               >
-                Scenes, not cards
+                All of My Project
               </h2>
             </div>
           </div>
