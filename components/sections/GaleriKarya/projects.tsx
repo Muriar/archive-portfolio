@@ -129,9 +129,9 @@ export function GalleryExperience() {
         className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 translate-x-1/3 translate-y-1/3 rounded-full bg-[radial-gradient(circle,rgba(150,129,104,0.18),transparent_70%)] blur-3xl"
       />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 pb-16 pt-5 sm:px-6 lg:px-8">
-        <section className="relative items-start pb- pt-12">
-          <div className="max-w-4xl space-y-6">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-16 px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+        <section className="relative items-start pb-1 pt-12">
+          <div className="max-w-4xl space-y-10">
             <p
               data-hero-meta
               className="text-[10px] uppercase tracking-[0.45em] text-stone-400"
@@ -187,7 +187,7 @@ export function GalleryExperience() {
               </h2>
             </div>
           </div>
-
+ 
           <div className="flex flex-wrap gap-2">
             {[
               { label: "Semua Karya", value: "all" as const },
