@@ -10,7 +10,7 @@ import {
   motion,
   useReducedMotion
 } from "framer-motion";
-import { CinematicLink } from "@/components/cinematic-link";
+import { CinematicLink } from "@/components/sections/GaleriKarya/cinematic-link";
 import {
   galleryProjects,
   type GalleryFilter,
