@@ -15,7 +15,7 @@ import {
   galleryProjects,
   type GalleryFilter,
   getYouTubeEmbedUrl
-} from "@/lib/gallery-data";
+} from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
