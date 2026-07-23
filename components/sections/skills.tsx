@@ -84,6 +84,8 @@ export function Skills() {
                           <Image 
                             src={skill.logo} 
                             alt={`${skill.name} Logo`} 
+                            width={36}
+                            height={36}
                             className="h-full w-full object-contain"
                             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
                           />

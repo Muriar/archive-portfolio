@@ -3,7 +3,7 @@
 import { useState } from "react"; // <--- TAMBAHKAN IMPORT STATE
 import Menu from "@/components/sections/menu";
 import App  from "@/components/site-header";
-import BgParticles from "@/components/sections/bgParticle";
+import BgParticles from "@/components/sections/Background/bgParticle";
 
 export default function MenuPage() {
   // State untuk mengontrol kemunculan Site-Header (CardNav)

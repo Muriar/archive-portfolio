@@ -1,4 +1,4 @@
-import Particles from "@/components/Particles";
+import Particles from "./Particles";
 
 type BgParticleProps = {
   getScrollTop?: () => number;
