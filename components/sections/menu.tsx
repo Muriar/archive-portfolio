@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 import { useRef } from "react";
-import BgParticle from "./bgParticle";
+import BgParticle from "@/components/sections/Background/bgParticle";
 import React from "react";
 
 interface menuProps {
