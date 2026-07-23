@@ -50,69 +50,101 @@ export function GalleryExperience() {
     }
   }, [activeFilter, activeSlug, filteredProjects]);
 
-  useGSAP(
-    () => {
-      if (reduceMotion) {
-        return;
-      }
+// ======================================================
+// UPDATE FIX BUG 
+// HERO ANIMATION
+// Hanya dijalankan sekali ketika halaman pertama kali di-mount.
+// Tidak akan dipanggil lagi ketika activeFilter berubah.
+// ======================================================
+useGSAP(
+  () => {
+    if (reduceMotion) return;
 
-      const heroLines = gsap.utils.toArray<HTMLElement>("[data-hero-line]");
-      const heroMeta = gsap.utils.toArray<HTMLElement>("[data-hero-meta]");
-      const archiveCards = gsap.utils.toArray<HTMLElement>("[data-archive-card]");
+    const heroLines =
+      gsap.utils.toArray<HTMLElement>("[data-hero-line]");
 
-      gsap.from(heroLines, {
-        opacity: 0,
-        yPercent: 120,
-        stagger: 0.08,
-        duration: 1.15,
-        ease: "power4.out"
-      });
+    const heroMeta =
+      gsap.utils.toArray<HTMLElement>("[data-hero-meta]");
 
-      gsap.from(heroMeta, {
-        opacity: 0,
-        y: 18,
-        stagger: 0.06,
-        duration: 0.9,
-        delay: 0.35,
-        ease: "power3.out"
-      });
+    // Animasi judul
+    gsap.from(heroLines, {
+      opacity: 0,
+      yPercent: 120,
+      stagger: 0.08,
+      duration: 1.15,
+      ease: "power4.out",
+    });
 
-      gsap.from(archiveCards, {
-        opacity: 0,
-        y: 28,
-        stagger: 0.08,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: rootRef.current,
-          start: "top 60%"
+    // Animasi subtitle
+    gsap.from(heroMeta, {
+      opacity: 0,
+      y: 18,
+      stagger: 0.06,
+      duration: 0.9,
+      delay: 0.35,
+      ease: "power3.out",
+    });
+
+    // Progress line di bagian bawah halaman
+    const progressFill = rootRef.current?.querySelector(
+      "[data-scroll-progress]"
+    ) as HTMLDivElement | null;
+
+    if (progressFill) {
+      gsap.fromTo(
+        progressFill,
+        {
+          scaleX: 0,
+        },
+        {
+          scaleX: 1,
+          ease: "none",
+          transformOrigin: "left center",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
         }
-      });
+      );
+    }
+  },
 
-      const progressFill = rootRef.current?.querySelector(
-        "[data-scroll-progress]"
-      ) as HTMLDivElement | null;
+  // Tidak ada activeFilter di sini.
+  // Hero hanya dianimasikan sekali.
+  {
+    scope: rootRef,
+    dependencies: [reduceMotion],
+  }
+);
 
-      if (progressFill) {
-        gsap.fromTo(
-          progressFill,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            ease: "none",
-            transformOrigin: "left center",
-            scrollTrigger: {
-              trigger: rootRef.current,
-              start: "top top",
-              end: "bottom bottom",
-              scrub: true
-            }
-          }
-        );
-      }
-    },
-    { scope: rootRef, dependencies: [reduceMotion, activeFilter] }
-  );
+// ======================================================
+// UPDATE FIX BUG 
+// ARCHIVE CARD ANIMATION
+// Akan dipanggil setiap activeFilter berubah.
+// Hero tidak ikut dianimasikan ulang.
+// ======================================================
+useGSAP(
+  () => {
+    if (reduceMotion) return;
+
+    const archiveCards =
+      gsap.utils.toArray<HTMLElement>("[data-archive-card]");
+
+    gsap.from(archiveCards, {
+      opacity: 0,
+      y: 28,
+      stagger: 0.08,
+      duration: 0.8,
+      ease: "power3.out",
+    });
+  },
+  {
+    scope: rootRef,
+    dependencies: [activeFilter],
+  }
+);
 
   return (
     <main
@@ -252,55 +284,27 @@ export function GalleryExperience() {
                           />
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                        <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-stone-200 backdrop-blur-sm">
-                          {project.category}
-                        </div>
                       </div>
 
                       <div className="flex flex-col justify-between gap-4">
                         <div className="space-y-3 sm:space-y-4">
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                             <h3
-                              className="text-display text-[1.35rem] leading-none text-stone-100 sm:text-2xl"
+                              className="text-display text-[1 rem] leading-none text-stone-100 sm:text-1xl"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
                               {project.title}
                             </h3>
-                            <span className="text-[9px] uppercase tracking-[0.28em] text-stone-400 sm:text-[10px]">
-                              {project.year}
-                            </span>
                           </div>
-
-                          <p className="line-clamp-3 text-[12px] leading-6 text-stone-300 sm:text-sm sm:leading-7">
-                            {project.summary}
-                          </p>
-
-                          <p className="text-[9px] uppercase tracking-[0.28em] text-stone-500 sm:text-[10px]">
-                            {project.format}
-                          </p>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                          {project.software.slice(0, 3).map((tool) => (
-                            <span
-                              key={tool}
-                              className="rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-stone-300 sm:px-3 sm:text-[10px]"
-                            >
-                              {tool}
-                            </span>
-                          ))}
                         </div>
                       </div>
                     </div>
                   </button>
 
                   <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-stone-500">
-                      {isActive ? "Focused scene" : "Archive scene"}
-                    </span>
                     <CinematicLink
                       href={project.links[0].href}
-                      className="rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-stone-200 transition-colors duration-300 hover:bg-white/10"
+                      className="w-full h-full items-center justify-center text-center rounded-full border border-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-stone-200 transition-colors duration-300 hover:bg-white/10"
                     >
                       Detail
                     </CinematicLink>

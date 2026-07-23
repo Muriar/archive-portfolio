@@ -21,19 +21,13 @@ export type GalleryFilter = "all" | "video editing" | "photo editing";
 export type GalleryProject = {
   slug: string;
   title: string;
-  category: string;
   filterTag: Exclude<GalleryFilter, "all">;
-  format: string;
-  year: string;
-  client: string;
   duration: string;
   description: string;
-  summary: string;
   heroNote: string;
   accent: string;
   thumbnail: string;
   videoUrl?: string;
-  software: string[];
   stack: string[];
   credits: string[];
   media: ProjectMedia[];
@@ -47,22 +41,15 @@ export const galleryProjects: GalleryProject[] = [
   {
     slug: "timeless-lyric-film",
     title: "Timeless",
-    category: "Lyric Film",
     filterTag: "video editing",
-    format: "Video + kinetic typography",
-    year: "2026",
-    client: "Personal study",
     duration: "00:24",
     description:
       "A nocturnal lyric sequence that treats each word as a moving object. The cuts stay restrained so the vocal texture can breathe through the frame.",
-    summary:
-      "Slow type, soft masks, and a patient rhythm shaped to feel like a verse suspended in fog.",
     heroNote:
       "Lyric fragments expand on the downbeat, then fold back into silence.",
     accent: "#c6b39a",
     thumbnail: "/purpleGradient.png",
     videoUrl: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
-    software: ["Alight Motion", "After Effects", "Canva"],
     stack: ["Beat sync", "Mask reveals", "Text pacing"],
     credits: ["Direction, edit, typography, motion by me"],
     media: [
@@ -93,21 +80,14 @@ export const galleryProjects: GalleryProject[] = [
   {
     slug: "afterhours-verse",
     title: "Afterhours Verse",
-    category: "Typography Reel",
     filterTag: "photo editing",
-    format: "Image + motion study",
-    year: "2026",
-    client: "Personal archive",
     duration: "00:18",
     description:
       "A typography-led reel built from layered crops, tiny shifts of scale, and a dark editorial rhythm that never loses its human pulse.",
-    summary:
-      "A study in restrained movement where each letter behaves like part of a film frame.",
     heroNote:
       "Big text is split, offset, and recomposed like a poster that learned how to breathe.",
     accent: "#8d918f",
     thumbnail: "/Photo1.jpeg",
-    software: ["Canva", "Alight Motion", "Photoshop"],
     stack: ["Split text", "Texture layers", "Editorial composition"],
     credits: ["Typography direction and motion by me"],
     media: [
@@ -139,21 +119,14 @@ export const galleryProjects: GalleryProject[] = [
   {
     slug: "masa-lalu-editorial-cut",
     title: "Masa Lalu",
-    category: "Editorial Montage",
     filterTag: "video editing",
-    format: "Story-driven montage",
-    year: "2026",
-    client: "Personal archive",
     duration: "00:31",
     description:
       "A reflective cut that leans on pacing, contrast, and silence. The transitions stay invisible so the emotional contour can do the work.",
-    summary:
-      "A montage that feels like looking back through a stack of memory cards.",
     heroNote:
       "The typography opens like a caption, then settles into a memory.",
     accent: "#6f7275",
     thumbnail: "/MyLogo.png",
-    software: ["After Effects", "Canva", "Alight Motion"],
     stack: ["Storyboarding", "Rhythmic cuts", "Soft transitions"],
     credits: ["Edit and concept by me"],
     media: [
@@ -185,21 +158,14 @@ export const galleryProjects: GalleryProject[] = [
   {
     slug: "signal-code-motion",
     title: "Signal",
-    category: "Programming Motion",
     filterTag: "photo editing",
-    format: "Interface study",
-    year: "2026",
-    client: "Personal study",
     duration: "00:12",
     description:
       "A small code-driven motion experiment that keeps its visuals grounded in typography, grids, and subtle kinetic transitions.",
-    summary:
-      "A compact interface study where the grid becomes part of the motion language.",
     heroNote:
       "Code and composition share the same frame without competing for attention.",
     accent: "#7a8b9d",
     thumbnail: "/vscodeLogo.jpg",
-    software: ["VS Code", "Next.js", "Tailwind CSS"],
     stack: ["Component systems", "Responsive layout", "Motion architecture"],
     credits: ["Design and front-end by me"],
     media: [
