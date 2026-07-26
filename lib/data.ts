@@ -48,7 +48,7 @@ export const galleryProjects: GalleryProject[] = [
     heroNote:
       "Lyric fragments expand on the downbeat, then fold back into silence.",
     accent: "#c6b39a",
-    thumbnail: "/purpleGradient.png",
+    thumbnail:"/Ttime.png",
     videoUrl: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
     stack: ["Beat sync", "Mask reveals", "Text pacing"],
     credits: ["Direction, edit, typography, motion by me"],
@@ -57,12 +57,6 @@ export const galleryProjects: GalleryProject[] = [
         kind: "video",
         src: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
         caption: "Primary cut with a restrained lyric reveal."
-      },
-      {
-        kind: "image",
-        src: "/purpleGradient.png",
-        alt: "Soft purple gradient preview",
-        caption: "Atmosphere plate used to hold the typography."
       },
       {
         kind: "panel",

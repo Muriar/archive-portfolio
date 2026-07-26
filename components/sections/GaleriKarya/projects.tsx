@@ -271,7 +271,7 @@ useGSAP(
                   >
                     <div className="grid gap-3 sm:grid-cols-[0.95fr_1.05fr] sm:gap-4">
                       <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-black">
-                        <div className="aspect-[4/5] sm:aspect-[4/3]">
+                        <div className="aspect-video">
                           <Image
                             src={project.thumbnail}
                             alt={project.title}
@@ -283,7 +283,7 @@ useGSAP(
                             )}
                           />
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                        <div className="absolute inset-0 from-black via-black/20 to-transparent" />
                       </div>
 
                       <div className="flex flex-col justify-between gap-4">
