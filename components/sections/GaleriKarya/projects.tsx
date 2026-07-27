@@ -28,14 +28,6 @@ export function GalleryExperience() {
     );
   }, [activeFilter]);
 
-  const activeProject = useMemo(() => {
-    return (
-      filteredProjects.find((project) => project.slug === activeSlug) ??
-      filteredProjects[0] ??
-      galleryProjects[0]
-    );
-  }, [activeSlug, filteredProjects]);
-
   useEffect(() => {
     if (!filteredProjects.length) {
       return;
@@ -290,7 +282,7 @@ useGSAP(
                         <div className="space-y-3 sm:space-y-4">
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                             <h3
-                              className="text-display text-[1 rem] leading-none text-stone-100 sm:text-1xl"
+                              className="text-display text-center text-[0.9rem] leading-none text-stone-100 sm:text-1xl"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
                               {project.title}

@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug, getProjectNeighbors, getYouTubeEmbedUrl } from "@/lib/data";
-import App from "@/components/site-header";
+import { getProjectBySlug, getProjectNeighbors } from "@/lib/data";
 
 interface ProjectDetailPageProps {
   params: {
@@ -26,7 +25,6 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
   return (
     <main className="min-h-screen bg-[#090909] text-stone-100">
-      <App />
       
       <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
         <Link 
@@ -36,7 +34,14 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           ← Kembali ke Galeri
         </Link>
 
-        <header className="space-y-6 border-b border-white/10 pb-12">
+        <header className="space-y-6">
+
+          <div className="rounded-2xl border p-3 space-y-3 bg-white/[0.02]"
+               style={{ borderColor: `${project.accent}30` }}>
+          <h1 className="text-1xl uppercase tracking-[0.2em] text-center" style={{ color: project.accent }}>
+            {project.title}
+          </h1>
+        </div>
           <div className="flex flex-wrap items-center gap-4">
             <span 
               className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em]"
@@ -46,56 +51,32 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             </span>
             <span className="text-[10px] tracking-widest text-stone-500 uppercase">Durasi: {project.duration}</span>
           </div>
-
-          <h1 className="text-4xl sm:text-6xl font-light tracking-tight uppercase text-stone-100">
-            {project.title}
-          </h1>
-
-          <p className="max-w-3xl text-lg text-stone-300 leading-relaxed font-light">
-            {project.description}
-          </p>
         </header>
-
-        {/* Render Media */}
-        <section className="py-16 space-y-16">
-          {project.media.map((item, index) => {
-            if (item.kind === "video") {
-              const embedUrl = getYouTubeEmbedUrl(item.src);
-              return (
-                <div key={index} className="space-y-3">
-                  <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
-                    {embedUrl ? (
-                      <iframe
-                        src={embedUrl}
-                        className="h-full w-full"
-                        allowFullScreen
-                        title={item.caption}
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center text-sm text-stone-500">Video tidak valid</div>
-                    )}
-                  </div>
-                  <p className="text-xs text-stone-400 italic font-light">{item.caption}</p>
-                </div>
-              );
-            }
-
-            if (item.kind === "image") {
-              return (
-                <div key={index} className="space-y-3">
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-stone-900">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="text-xs text-stone-400 italic font-light">{item.caption}</p>
-                </div>
-              );
-            }
-
+        
+{/* Render Media */}
+<section className="py-16 space-y-16">
+  {project.media.map((item, index) => {
+    if (item.kind === "video" && item.src) {
+      
+      return (
+        <div key={index} className="space-y-3">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+            <video
+            src={item.src}
+            className="absolute inset-0 h-full w-full object-contain"
+            controls
+            playsInline
+            preload="metadata"
+          />
+        </div>
+          {item.caption && (
+            <p className="text-xs text-stone-400 italic font-light">
+              {item.caption}
+            </p>
+          )}
+        </div>
+      );
+    }       
             if (item.kind === "panel") {
               return (
                 <div 
