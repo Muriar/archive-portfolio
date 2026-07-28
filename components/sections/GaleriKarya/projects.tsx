@@ -240,7 +240,6 @@ useGSAP(
 
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             {filteredProjects.map((project, index) => {
-              const isActive = project.slug === activeSlug;
 
               return (
                 <motion.article
@@ -250,10 +249,7 @@ useGSAP(
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className={cn(
-                    "group overflow-hidden rounded-[1.75rem] border p-4 transition-colors duration-300",
-                    isActive
-                      ? "border-stone-300/30 bg-white/[0.06]"
-                      : "border-white/10 bg-white/[0.03]"
+                    "group overflow-hidden rounded-[1.75rem] border bg-[#140000] p-4 transition-colors duration-300 z-[1]"
                   )}
                 >
                   <button
@@ -262,7 +258,7 @@ useGSAP(
                     className="block w-full text-left"
                   >
                     <div className="grid gap-3 sm:grid-cols-[0.95fr_1.05fr] sm:gap-4">
-                      <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-black">
+                      <div className="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#1a1a1a]">
                         <div className="aspect-video">
                           <Image
                             src={project.thumbnail}
@@ -271,11 +267,11 @@ useGSAP(
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className={cn(
                               "object-cover transition-transform duration-700 group-hover:scale-[1.04]",
-                              index % 2 === 0 ? "opacity-90" : "opacity-100"
+                              index % 2 === 0 ? "opacity-100" : "opacity-100"
                             )}
                           />
                         </div>
-                        <div className="absolute inset-0 from-black via-black/20 to-transparent" />
+                        <div/>
                       </div>
 
                       <div className="flex flex-col justify-between gap-4">
