@@ -137,7 +137,59 @@ export const galleryProjects: GalleryProject[] = [
         href: "/Detail/setiap-waktu"
       }
     ]
-  }
+  },
+  {
+    slug: "Curhat-Dikit",
+    title: "Curhat Dikit",
+    filterTag: "video editing",
+    duration: "00:18",
+    accent: "#8d918f",
+    thumbnail: "/thumbnail/curhat.png",
+    media: [
+      {
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.11.mp4",
+        caption: "Still frame from the main reel."
+      },
+      {
+        kind: "panel",
+        title: "Text as image",
+        body: "The layout treats words as surfaces, not labels, letting the composition carry the emotion before the message resolves."
+      }
+    ],
+    links: [
+      {
+        label: "Open detail",
+        href: "/Detail/Curhat-Dikit"
+      }
+    ]
+  },
+  {
+    slug: "Somebody-Pleasure",
+    title: "Somebody Pleasure",
+    filterTag: "video editing",
+    duration: "00:31",
+    accent: "#6f7275",
+    thumbnail: "/thumbnail/somepleasure.png",
+    media: [
+      {
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.11%20(1).mp4",
+        caption: "Brand mark used as an anchor for the composition."
+      },
+      {
+        kind: "panel",
+        title: "Narrative pulse",
+        body: "This piece is paced like a letter being read aloud, with pauses left in the frame so the image can speak."
+      },
+    ],
+    links: [
+      {
+        label: "Open detail",
+        href: "/Detail/Somebody-Pleasure"
+      }
+    ]
+  },
 ];
 
 export function getProjectBySlug(slug: string) {

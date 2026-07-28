@@ -309,7 +309,7 @@ useGSAP(
             data-scroll-progress
             className="h-px flex-1 origin-left scale-x-0 bg-stone-300/40"
           />
-          <span>Archive index</span>
+          <span>Masih On Progress</span>
         </div>
       </div>
     </main>
