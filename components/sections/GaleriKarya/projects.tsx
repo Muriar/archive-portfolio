@@ -249,7 +249,7 @@ useGSAP(
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className={cn(
-                    "group overflow-hidden rounded-[1.75rem] border bg-[#140000] p-4 transition-colors duration-300 z-[1]"
+                    "group overflow-hidden rounded-[1.75rem] border bg-[#1a1a1a] p-4 transition-colors duration-300 z-[1]"
                   )}
                 >
                   <button

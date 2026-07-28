@@ -14,7 +14,16 @@ const config: Config = {
       },
       boxShadow: {
         soft: "0 24px 80px rgba(0, 0, 0, 0.08)"
-      }
+      },
+       animation: {
+        "grid-move": "gridMove 20s linear infinite",
+      },
+      keyframes: {
+        gridMove: {
+          "0%": { "background-position": "0px 0px" },
+          "100%": { "background-position": "48px 48px" },
+        },
+      },
     }
   },
   plugins: []
