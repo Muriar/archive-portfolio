@@ -23,13 +23,8 @@ export type GalleryProject = {
   title: string;
   filterTag: Exclude<GalleryFilter, "all">;
   duration: string;
-  description: string;
-  heroNote: string;
   accent: string;
   thumbnail: string;
-  videoUrl?: string;
-  stack: string[];
-  credits: string[];
   media: ProjectMedia[];
   links: {
     label: string;
@@ -39,23 +34,17 @@ export type GalleryProject = {
 
 export const galleryProjects: GalleryProject[] = [
   {
-    slug: "timeless-lyric-film",
+    slug: "timeless",
     title: "Timeless",
     filterTag: "video editing",
     duration: "00:24",
-    description:
-      "A nocturnal lyric sequence that treats each word as a moving object. The cuts stay restrained so the vocal texture can breathe through the frame.",
-    heroNote:
-      "Lyric fragments expand on the downbeat, then fold back into silence.",
+
     accent: "#c6b39a",
-    thumbnail:"/Ttime.png",
-    videoUrl: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
-    stack: ["Beat sync", "Mask reveals", "Text pacing"],
-    credits: ["Direction, edit, typography, motion by me"],
+    thumbnail:"/thumbnail/Ttime.png",
     media: [
       {
         kind: "video",
-        src: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/sign/Video/timeles.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84NjRkMTQ4Yi1kMzJhLTQ5NDEtODVkNS1kNWQ1MWIyNWZmZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWaWRlby90aW1lbGVzLm1wNCIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODUxNTI3MTEsImV4cCI6MTgxNjY4ODcxMX0.b7wUjgEze1-UxC7TU0N2THfGTeiIwyNB6st7vx2sjOU",
         caption: "Primary cut with a restrained lyric reveal."
       },
       {
@@ -67,35 +56,22 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/work/timeless-lyric-film"
+        href: "/Detail/timeless"
       }
     ]
   },
   {
-    slug: "afterhours-verse",
-    title: "Afterhours Verse",
-    filterTag: "photo editing",
+    slug: "multo",
+    title: "Multo",
+    filterTag: "video editing",
     duration: "00:18",
-    description:
-      "A typography-led reel built from layered crops, tiny shifts of scale, and a dark editorial rhythm that never loses its human pulse.",
-    heroNote:
-      "Big text is split, offset, and recomposed like a poster that learned how to breathe.",
     accent: "#8d918f",
-    thumbnail: "/Photo1.jpeg",
-    stack: ["Split text", "Texture layers", "Editorial composition"],
-    credits: ["Typography direction and motion by me"],
+    thumbnail: "/thumbnail/multoTn.png",
     media: [
       {
-        kind: "image",
-        src: "/Photo1.jpeg",
-        alt: "Preview still for Afterhours Verse",
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/molto-orv.mp4",
         caption: "Still frame from the main reel."
-      },
-      {
-        kind: "image",
-        src: "/profile.jpg",
-        alt: "Secondary portrait texture for Afterhours Verse",
-        caption: "Secondary texture plate."
       },
       {
         kind: "panel",
@@ -106,28 +82,21 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/work/afterhours-verse"
+        href: "/Detail/multo"
       }
     ]
   },
   {
-    slug: "masa-lalu-editorial-cut",
-    title: "Masa Lalu",
+    slug: "Ramai-Sepi-Bersama",
+    title: "Ramai Sepi Bersama",
     filterTag: "video editing",
     duration: "00:31",
-    description:
-      "A reflective cut that leans on pacing, contrast, and silence. The transitions stay invisible so the emotional contour can do the work.",
-    heroNote:
-      "The typography opens like a caption, then settles into a memory.",
     accent: "#6f7275",
-    thumbnail: "/MyLogo.png",
-    stack: ["Storyboarding", "Rhythmic cuts", "Soft transitions"],
-    credits: ["Edit and concept by me"],
+    thumbnail: "/thumbnail/ramaisepi.png",
     media: [
       {
-        kind: "image",
-        src: "/MyLogo.png",
-        alt: "Logo-based artwork for Masa Lalu",
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.10.mp4",
         caption: "Brand mark used as an anchor for the composition."
       },
       {
@@ -135,38 +104,25 @@ export const galleryProjects: GalleryProject[] = [
         title: "Narrative pulse",
         body: "This piece is paced like a letter being read aloud, with pauses left in the frame so the image can speak."
       },
-      {
-        kind: "image",
-        src: "/profile.jpg",
-        alt: "Supporting texture for Masa Lalu",
-        caption: "Supporting texture."
-      }
     ],
     links: [
       {
         label: "Open detail",
-        href: "/work/masa-lalu-editorial-cut"
+        href: "/Detail/Ramai-Sepi-Bersama"
       }
     ]
   },
   {
-    slug: "signal-code-motion",
-    title: "Signal",
-    filterTag: "photo editing",
+    slug: "setiap-waktu",
+    title: "Setiap Waktu",
+    filterTag: "video editing",
     duration: "00:12",
-    description:
-      "A small code-driven motion experiment that keeps its visuals grounded in typography, grids, and subtle kinetic transitions.",
-    heroNote:
-      "Code and composition share the same frame without competing for attention.",
     accent: "#7a8b9d",
-    thumbnail: "/vscodeLogo.jpg",
-    stack: ["Component systems", "Responsive layout", "Motion architecture"],
-    credits: ["Design and front-end by me"],
+    thumbnail: "/thumbnail/setiapwaktuTn.png",
     media: [
       {
-        kind: "image",
-        src: "/vscodeLogo.jpg",
-        alt: "VS Code themed artwork for Signal",
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/setiapWaktu.mp4",
         caption: "Interface layer used as the primary visual."
       },
       {
@@ -174,28 +130,67 @@ export const galleryProjects: GalleryProject[] = [
         title: "System feel",
         body: "The piece borrows from editorial spacing rather than dashboard UI so the code work still feels cinematic."
       },
+    ],
+    links: [
+      {
+        label: "Open detail",
+        href: "/Detail/setiap-waktu"
+      }
+    ]
+  },
+  {
+    slug: "Curhat-Dikit",
+    title: "Curhat Dikit",
+    filterTag: "video editing",
+    duration: "00:18",
+    accent: "#8d918f",
+    thumbnail: "/thumbnail/curhat.png",
+    media: [
       {
         kind: "video",
-        src: "https://youtu.be/Ir7WmgzyK84?si=l9tE6FzbDXf6ePt4",
-        caption: "Reference clip for the motion pacing."
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.11.mp4",
+        caption: "Still frame from the main reel."
+      },
+      {
+        kind: "panel",
+        title: "Text as image",
+        body: "The layout treats words as surfaces, not labels, letting the composition carry the emotion before the message resolves."
       }
     ],
     links: [
       {
         label: "Open detail",
-        href: "/work/signal-code-motion"
+        href: "/Detail/Curhat-Dikit"
       }
     ]
-  }
+  },
+  {
+    slug: "Somebody-Pleasure",
+    title: "Somebody Pleasure",
+    filterTag: "video editing",
+    duration: "00:31",
+    accent: "#6f7275",
+    thumbnail: "/thumbnail/somepleasure.png",
+    media: [
+      {
+        kind: "video",
+        src: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.11%20(1).mp4",
+        caption: "Brand mark used as an anchor for the composition."
+      },
+      {
+        kind: "panel",
+        title: "Narrative pulse",
+        body: "This piece is paced like a letter being read aloud, with pauses left in the frame so the image can speak."
+      },
+    ],
+    links: [
+      {
+        label: "Open detail",
+        href: "/Detail/Somebody-Pleasure"
+      }
+    ]
+  },
 ];
-
-export function getYouTubeEmbedUrl(url: string) {
-  const match = url.match(
-    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&\s]+)/
-  );
-
-  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
-}
 
 export function getProjectBySlug(slug: string) {
   return galleryProjects.find((project) => project.slug === slug);

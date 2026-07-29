@@ -3,138 +3,171 @@
 import { motion } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/motion";
 import Image from "next/image";
+import { Code, Film, Layers } from "lucide-react";
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[92vh] items-start border-b border-neutral-200 px-5 pt-12 pb-20 dark:border-neutral-800 sm:px-6 lg:px-8"
+      className="relative flex min-h-[92vh] items-center border-b border-neutral-200 px-5 pt-12 pb-20 dark:border-neutral-800 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Background Grid Efek */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.06)_1px,transparent_1px)] bg-[size:44px_44px] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.07)_1px,transparent_1px)]" />
-      
       <motion.div
-        className="mx-auto grid grid-cols-1 justify-items-center text-center w-full max-w-2xl gap-y-8"
+        className="mx-auto w-full max-w-6xl flex flex-col items-center"
         variants={stagger}
         initial="hidden"
         animate="visible"
       >
         
-        {/* 1. Posisi */}
-        <motion.p
-          variants={fadeUp}
-          className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500 dark:text-neutral-400 mt-6"
-        >
-          Graphics & Motion Designer
-        </motion.p>
-
-        {/* 2. NAMA */}
-        <motion.h1
-          variants={fadeUp}
-          className="text-2xl font-serif font-semibold leading-tight tracking-normal text-neutral-950 dark:text-stone-50 sm:text-4xl -mt-4"
-        >
-          Muhammad Rizqi Arsyadi
-        </motion.h1>
-        <motion.div 
-          variants={fadeUp} 
-          className="w-full flex justify-center"
-        >
-          <motion.div
-            className="w-[90%] max-w-[600px] rounded-2xl border border-neutral-200 bg-stone-50 dark:bg-neutral-950 p-6 shadow-md dark:border-neutral-800"
-            animate={{
-              boxShadow: [
-                "0 0 30px rgba(255, 255, 255, 0.04), 0 0 60px rgba(255, 255, 255, 0.01)", // Ukuran Terkecil (Mengecil)
-                "0 0 65px rgba(255, 255, 255, 0.10), 0 0 120px rgba(255, 255, 255, 0.04)", // Ukuran Terbesar (Membesar)
-                "0 0 30px rgba(255, 255, 255, 0.04), 0 0 60px rgba(255, 255, 255, 0.01)"  // Kembali ke awal
-              ]
-            }}
-            transition={{           //ini animasi glownya
-              duration: 4,          // Durasi 4 detik
-              repeat: Infinity,     // Ngulang
-              ease: "easeInOut"
-            }}
-          >
-            {/* Bagian Atas: Komponen Foto 3:4 */}
-            <div className="relative aspect-[3/4] overflow-hidden rounded-[1.25rem] border border-neutral-700 bg-neutral-900 p-0 text-white shadow-2xl lg:rounded-[1.5rem]">
-              <Image
-                src="/Photo1.jpeg"
-                alt="Muhammad Rizqi Arsyadi"
-                fill
-                className="object-cover z-0"
-                priority
-              />
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
-              <div className="relative z-20 flex h-full flex-col justify-between p-6 text-white pointer-events-none text-left">
-                <p className="text-sm uppercase tracking-[0.18em]">
-                  Still Learning To Everything
-                </p>
-                <p className="text-sm uppercase tracking-[0.59em]">
-                  Fortuna Audaces Iuvat
-                </p>
-              </div>
-            </div>
-
-            {/* Garis Pembatas Tipis Internal */}
-            <div className="w-full border-t border-neutral-200 dark:border-neutral-800 my-6 opacity-60" />
-
-            {/* Bagian Bawah: Teks Deskripsi */}
-            <div className="text-center w-full px-2">
-              <h3 className="text-1xl font-serif font-medium mb-3 text-neutral-950 dark:text-stone-50">
-                Halo!!
-              </h3>
-              <p className="text-base leading-7 text-neutral-600 dark:text-neutral-300">
-                Halo, saya Muhammad Rizqi Arsyadi tapi bisa juga dipanggil Qico, seorang Motion Graphics dan Programmer yang memiliki ketertarikan
-                dalam menciptakan visual yang dinamis dan menarik. Saya senang menggabungkan kreativitas dengan 
-                teknologi untuk menghasilkan karya yang mampu menyampaikan cerita dan meninggalkan kesan.
-              </p>
-            </div>
+        {/* ======================================================== */}
+        {/* URUTAN 1: DESIGNER (Selalu di paling atas, baik mobile maupun desktop) */}
+        {/* ======================================================== */}
+        <div className="text-center w-full max-w-3xl flex flex-col items-center space-y-4 mt-12 mb-8 lg:mb-12">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 px-3 py-1">
+            <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+              Graphics & Motion Designer
+            </p>
           </motion.div>
-       </motion.div>
 
-        <motion.p
-          variants={fadeUp}
-          className="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500 dark:text-neutral-400 mt-6 -mb-2"
-        >
-          Filosofi
-        </motion.p>
-         <motion.div 
-           className="w-[90%] max-w-[600px] rounded-2xl border border-neutral-200     bg-stone-50 p-8 text-neutral-950 shadow-md dark:border-neutral-800  dark:bg-neutral-950 dark:text-white"
-           animate={{
-            boxShadow: [
-              "0 0 30px rgba(255, 255, 255, 0.04), 0 0 60px rgba(255, 255, 255, 0.01)", 
-              "0 0 65px rgba(255, 255, 255, 0.10), 0 0 120px rgba(255, 255, 255, 0.04)", 
-              "0 0 30px rgba(255, 255, 255, 0.04), 0 0 60px rgba(255, 255, 255, 0.01)"  
-            ]
-           }}
-           transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5 // delay
-           }}
+          <motion.h1
+            variants={fadeUp}
+            className="text-2xl font-serif font-bold leading-tight tracking-tight text-neutral-950 dark:text-stone-50 sm:text-5xl"
           >
-          <h4 className="text-1xl font-serif font-medium mb-4 tracking-wide">
-            Fortuna Audaces Iuvat
-          </h4>
-          <div className="w-full border-t border-neutral-200 dark:border-neutral-800 my-4 opacity-60" />
-          <p className="text-sm md:text-base leading-relaxed text-neutral-500 dark:text-neutral-400 italic font-light px-2 md:px-4">
-            &quot;bermakna bahwa keberuntungan dan kesuksesan bukanlah hal pasif, melainkan hasil nyata dari keberanian seseorang dalam mengambil risiko dan bertindak tegas. Semboyan ini menegaskan bahwa takdir baik akan memihak pada mereka yang berani menghadapi ketakutan, karena peluang besar hanya tercipta melalui aksi nyata, bukan keraguan.&quot;
-          </p>
-        </motion.div>
-        
-        <motion.hr 
-          variants={fadeUp}
-          className="w-full border-t border-neutral-200 dark:border-neutral-800 my-2"
-        />
+            Muhammad Rizqi Arsyadi
+          </motion.h1>
+        </div>
 
-        <motion.p
-          variants={fadeUp}
-          className="text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500 dark:text-neutral-400 mt-6 -mb-2"
-        >
-          website masih berada dalam tahap pengembangan
-        </motion.p>
-        
+        {/* Pembungkus Grid Utama (Untuk mengatur layout konten di bawah Nama) */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* ======================================================== */}
+          {/* URUTAN 2: FOTO & ICON TECH STACK */}
+          {/* Mobile: Tampil setelah Nama | Desktop: Menjadi Kolom Kiri (lebar 5/12) */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-5 w-full flex flex-col items-center gap-6 order-1">
+            <motion.div
+              variants={fadeUp}
+              className="w-full max-w-[360px] lg:max-w-full rounded-2xl border border-neutral-200 bg-stone-50 dark:bg-neutral-950 p-4 shadow-xl dark:border-neutral-800/80"
+            >
+              {/* Komponen Foto 3:4 */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-neutral-700/30 bg-neutral-900 shadow-inner group">
+                <Image
+                  src="/Photo1.jpeg"
+                  alt="Muhammad Rizqi Arsyadi"
+                  fill
+                  className="object-cover z-0 transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                
+                <div className="absolute inset-x-0 bottom-0 z-20 p-5 text-white text-left space-y-1">
+                  <h4 className="text-sm font-medium tracking-[0.08em]">
+                    Still Learning To Everything
+                  </h4>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Micro-Card Tech Stack */}
+            <motion.div 
+              variants={fadeUp}
+              className="grid grid-cols-3 gap-3 w-full max-w-[360px] lg:max-w-full text-xs font-medium"
+            >
+              <div className="flex flex-col items-center justify-center p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <Film className="w-4 h-4 mb-1 text-cyan-400" />
+                <span>Motion</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <Code className="w-4 h-4 mb-1 text-indigo-400" />
+                <span>Code</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <Layers className="w-4 h-4 mb-1 text-purple-400" />
+                <span>UI/UX</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ======================================================== */}
+          {/* URUTAN 3 & 4: PERKENALAN & FILOSOFI */}
+          {/* Mobile: Tampil setelah Foto | Desktop: Menjadi Kolom Kanan (lebar 7/12) */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 order-2">
+            
+            {/* Teks Perkenalan */}
+            <motion.div variants={fadeUp} className="space-y-4 max-w-xl">
+              <p className="text-base sm:text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+                Halo, saya bisa dipanggil <span className="text-neutral-950 dark:text-cyan-400 font-medium">Qico</span>. Seorang
+                Motion Graphics Designer dan Programmer yang memiliki ketertarikan mendalam dalam menciptakan visual dinamis. Saya senang menggabungkan kreativitas dengan teknologi untuk menghasilkan karya yang mampu menyampaikan cerita dan meninggalkan kesan mendalam.
+              </p>
+            </motion.div>
+
+            {/* Pemisah Konten Menuju Filosofi */}
+            <div className="w-full border-t border-neutral-200 dark:border-neutral-800 pt-2" />
+
+            {/* Bagian Filosofi */}
+            <motion.div 
+              variants={fadeUp}
+              className="w-full rounded-2xl border border-neutral-200/80 bg-neutral-50/50 p-6 text-neutral-950 dark:border-neutral-800/60 dark:bg-neutral-900/30 backdrop-blur-sm text-left"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#816C5A]">Filosofi Utama</span>
+              </div>
+              <h4 className="text-lg  font-medium mb-2 tracking-wide text-stone-300">
+                Fortuna Audaces Iuvat
+              </h4>
+              <p className="text-xs sm:text-sm leading-relaxed text-neutral-500 dark:text-neutral-400 italic font-light">
+                &quot;Keberuntungan berpihak pada yang berani. Keberanian seseorang dalam mengambil risiko dan bertindak tegas akan membuka jalan menuju kejayaan. Peluang besar hanya tercipta melalui aksi nyata.&quot;
+              </p>
+            </motion.div>
+
+             <div className="w-full border-t border-neutral-200 dark:border-neutral-800 pt-1" />
+
+            {/* =============================== */}
+            {/* TAMBAHAN BARU: KARAKTER FAVORIT */}
+            {/* =============================== */}
+           <motion.div 
+           variants={fadeUp}
+           className="w-full flex flex-col sm:flex-row items-center justify-between gap-6 pt-2"
+           >
+              <motion.div 
+              className="w-full max-w-[360px] lg:max-w-full rounded-2xl border border-neutral-200 bg-stone-50 dark:bg-neutral-950 p-4 shadow-xl dark:border-neutral-800/80"
+              >
+                <h3 className="text-[10px] italic font-bold tracking-widest text-[#6C5A4B] uppercase pb-3">Favorite Character</h3>
+
+               {/* Bingkai Foto Karakter */}
+               <div className="relative w-full sm:w-full h-32 sm:h-64 rounded-xl overflow-hidden border border-neutral-700 bg-neutral-800 flex-shrink-0">
+                 <Image
+                 src="/falloficarus.svg"
+                 alt="Karakter Favorit"
+                 fill
+                 className="object-cover"
+                 />
+               </div>
+
+                {/* Teks Pendukung */}
+                <div className="text-left">
+                 <h5 className="text-sm font-medium text-stone-200 pt-2">Rewriting Icarus by Fiona</h5>
+                 <p className="text-xs font-latin font-bold text-neutral-500 mt-0.5">
+                  &apos;Icarus laughed as he fell.<br/>
+                  Threw his head back and yelled into the winds, <br/>
+                  arms spread wide,<br/>
+                  teeth bared to the world.&apos;<br/><br/>
+                  &quot;Di dunia yang menuntut kepatuhan, ia memilih menulis ulang takdirnya dengan tangannya sendiri. Ketika lilin yang meleleh membakar tubuhnya dan sayapnya hancur membara, ia tidak berteriak ketakutan, melainkan tertawa bebas yang menantang dunia dan seisinya. Baginya, rasa sakit dari lelehan lilin yang membakar kulit tak sebanding dengan kemegahan dunia keemasan yang berhasil dia sentuh. Dia tidak jatuh sebagai korban yang malang, melainkan sebagai pemberontak yang dengan sadar memilih hancur demi kebebasan mutlak. Ia yang sadar dan memilih jatuh dengan kebebasan dibandingkan terkekang oleh sebuah batasan
+                 &quot;</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
       </motion.div>
+
+      {/* Teks Status Footer Tetap di Bawah */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none">
+        <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-neutral-400/70 dark:text-neutral-500/60 whitespace-nowrap text-center">
+          website masih berada dalam tahap pengembangan
+        </p>
+      </div>
     </section>
   );
 }

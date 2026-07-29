@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./global.css";
 // 1. Impor komponen pembungkus transisi
 import { TerapkanTransisi } from "./providers"; 
@@ -7,6 +7,11 @@ import { TerapkanTransisi } from "./providers";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans"
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-latin"
 });
 
 export const metadata: Metadata = {
@@ -21,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased bg-[#0d0d0d] text-stone-50`}>
+      <body className={`${inter.variable} ${caveat.variable} antialiased bg-[#0d0d0d] text-stone-50`}>
         {/* 2. Bungkus children di sini */}
         <TerapkanTransisi>
           {children}
