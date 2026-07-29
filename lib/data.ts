@@ -56,7 +56,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/timeless"
+        href: "/Karya/Detail/timeless"
       }
     ]
   },
@@ -82,7 +82,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/multo"
+        href: "/Karya/Detail/multo"
       }
     ]
   },
@@ -108,7 +108,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Ramai-Sepi-Bersama"
+        href: "/Karya/Detail/Ramai-Sepi-Bersama"
       }
     ]
   },
@@ -134,7 +134,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/setiap-waktu"
+        href: "/Karya/Detail/setiap-waktu"
       }
     ]
   },
@@ -160,7 +160,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Curhat-Dikit"
+        href: "/Karya/Detail/Curhat-Dikit"
       }
     ]
   },
@@ -186,7 +186,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Somebody-Pleasure"
+        href: "/Karya/Detail/Somebody-Pleasure"
       }
     ]
   },
