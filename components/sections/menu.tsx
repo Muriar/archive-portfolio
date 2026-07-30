@@ -53,6 +53,9 @@ function SectionEmpat() {
       <button className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-500 transition">
         Coba Playground
       </button>
+      <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-neutral-400/70 dark:text-neutral-500/60 whitespace-nowrap text-center">
+        Website Masih Dalam Pengembangan
+      </p>
     </motion.div>
   );
 }

@@ -161,13 +161,6 @@ export function Hero() {
           </div>
         </div>
       </motion.div>
-
-        {/* Teks Status Footer Tetap di Bawah */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none">
-         <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-neutral-400/70 dark:text-neutral-500/60 whitespace-nowrap text-center">
-          website masih berada dalam tahap pengembangan
-         </p>
-      </div>
     </section>
   );
 }
