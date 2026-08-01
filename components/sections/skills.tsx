@@ -129,11 +129,6 @@ export function Skills() {
         {/* =========================================================
             CORE SKILLS
         ========================================================= */}
-
-        {/* =========================================================
-    EXPERTISE / CORE SKILLS
-========================================================= */}
-
 <motion.div
   variants={fadeUp}
   className="mt-20"
@@ -150,17 +145,13 @@ export function Skills() {
         Core Skills
       </h2>
     </div>
-
-    <span className="hidden font-mono text-[10px] text-neutral-400 sm:block">
-      06 AREAS
-    </span>
   </div>
 
   {/* =====================================================
       MOBILE-FIRST SKILL GRID
   ===================================================== */}
 
-  <div className="grid grid-cols-2 gap-px overflow-hidden border dark:border-neutral-800 rounded-xl">
+  <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl">
     
     {coreSkills.map((skill, index) => {
       const isHero = index === 0;
@@ -174,8 +165,10 @@ export function Skills() {
             relative flex flex-col justify-between
             overflow-hidden
             rounded-xl
-            dark:bg-neutral-950
-
+            border border-neutral-200 dark:border-neutral-800
+            mb-1
+            ml-1
+            bg-[#1a1a1a]
             ${isHero || isLast ? "col-span-2" : "col-span-1"}
 
             ${isHero ? "min-h-[330px] sm:min-h-[360px]" : "min-h-[220px] sm:min-h-[250px]"}
@@ -183,27 +176,14 @@ export function Skills() {
             p-5 sm:p-7
           `}
         >
-          {/* Number */}
-
-          <div className="flex items-start justify-between">
-            <span className="font-mono text-[10px] text-neutral-400">
-              {skill.number}
-            </span>
-
-            {isHero && (
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-neutral-400">
-                Primary
-              </span>
-            )}
-          </div>
-
           {/* Content */}
 
           <div>
             <h3
               className={`
-                max-w-3xl
+                max-w-1xl
                 font-semibold
+                align-text-top
                 uppercase
                 tracking-[-0.04em]
                 leading-[0.9]
@@ -211,7 +191,7 @@ export function Skills() {
                 ${
                   isHero
                     ? "text-[clamp(2.8rem,11vw,6rem)]"
-                    : "text-xl sm:text-2xl"
+                    : "text-1xl sm:text-xl"
                 }
               `}
             >
@@ -234,23 +214,6 @@ export function Skills() {
               {skill.description}
             </p>
           </div>
-
-          {/* Decorative index line */}
-
-          <div
-            className={`
-              absolute bottom-0 left-0
-              h-px
-              bg-neutral-300
-              dark:bg-neutral-700
-
-              ${
-                isHero || isLast
-                  ? "w-1/3"
-                  : "w-1/4"
-              }
-            `}
-          />
         </motion.article>
       );
     })}
