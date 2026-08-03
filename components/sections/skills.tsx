@@ -7,72 +7,58 @@ import Image from "next/image";
 import { skills } from "@/lib/data";
 import { fadeUp, stagger } from "@/lib/motion";
 
-const coreSkills = [
+interface coreSkills {
+  number: string;
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const coreSkills:coreSkills[] = [
   {
     number: "01",
     title: "Motion Graphics",
     description:
       "Creating dynamic visual compositions through movement, timing, rhythm, and transitions.",
+    image: "/logo/canvaLogo.jpg",
   },
   {
     number: "02",
     title: "Kinetic Typography",
     description:
       "Turning words, lyrics, and typography into visual movement that follows rhythm and emotion.",
+    image: "/logo/canvaLogo.jpg",
   },
   {
     number: "03",
     title: "Video Editing",
     description:
       "Combining footage, music, pacing, and visual elements into cohesive visual sequences.",
+    image: "/logo/canvaLogo.jpg",
   },
   {
     number: "04",
     title: "Visual Effects",
     description:
       "Enhancing visuals through compositing, effects, atmosphere, and visual treatment.",
+    image: "/logo/canvaLogo.jpg",
   },
   {
     number: "05",
     title: "Visual Design",
     description:
       "Building compositions through typography, layout, hierarchy, color, and visual direction.",
+    image: "/logo/canvaLogo.jpg",
   },
   {
     number: "06",
     title: "Color & Compositing",
     description:
       "Refining visuals through color treatment, layering, blending, and consistent visual tone.",
+    image: "/logo/canvaLogo.jpg",
   },
 ];
 
-const workflow = [
-  {
-    number: "01",
-    title: "Concept",
-    description: "Finding the idea, direction, and visual language.",
-  },
-  {
-    number: "02",
-    title: "Design",
-    description: "Building composition, typography, and visual elements.",
-  },
-  {
-    number: "03",
-    title: "Motion",
-    description: "Bringing the design to life through timing and movement.",
-  },
-  {
-    number: "04",
-    title: "Refine",
-    description: "Polishing effects, compositing, color, and visual details.",
-  },
-  {
-    number: "05",
-    title: "Deliver",
-    description: "Preparing the final visual for its intended platform and format.",
-  },
-];
 
 export function Skills() {
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
@@ -168,14 +154,25 @@ export function Skills() {
             border border-neutral-200 dark:border-neutral-800
             mb-1
             ml-1
-            bg-[#1a1a1a]
             ${isHero || isLast ? "col-span-2" : "col-span-1"}
-
             ${isHero ? "min-h-[330px] sm:min-h-[360px]" : "min-h-[220px] sm:min-h-[250px]"}
-
             p-5 sm:p-7
           `}
         >
+
+          {skill.image && (
+            <div className="absolute inset-0 z-0 overflow-hidden">
+             <Image
+               src={skill.image}
+               alt={skill.title}
+               fill
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+               className="object-cover object-center opacity-35 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-50"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/75 to-transparent" />
+            </div>
+          )}
+
           {/* Content */}
 
           <div>
@@ -201,9 +198,8 @@ export function Skills() {
             <p
               className={`
                 max-w-xl
-                text-neutral-500
-                dark:text-neutral-400
-
+                text-white
+                mix-blend-difference
                 ${
                   isHero
                     ? "mt-5 text-sm leading-6 sm:text-base"
