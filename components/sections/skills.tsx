@@ -12,6 +12,8 @@ interface coreSkills {
   title: string;
   description: string;
   image?: string;
+  video?: string;
+  poster?: string;
 }
 
 const coreSkills:coreSkills[] = [
@@ -19,43 +21,43 @@ const coreSkills:coreSkills[] = [
     number: "01",
     title: "Motion Graphics",
     description:
-      "Creating dynamic visual compositions through movement, timing, rhythm, and transitions.",
-    image: "/logo/canvaLogo.jpg",
+      "Saat ini saya sedang mendalami dunia motion graphic. Fokus utama saya adalah belajar bagaimana cara menyederhanakan data atau informasi yang rumit menjadi visual yang menarik dan mudah dipahami oleh penonton.",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/EEA.mp4",
   },
   {
     number: "02",
     title: "Kinetic Typography",
     description:
-      "Turning words, lyrics, and typography into visual movement that follows rhythm and emotion.",
-    image: "/logo/canvaLogo.jpg",
+      "Teknik ini mengajarkan saya cara membuat teks atau huruf bergerak secara dinamis mengikuti ritme suara lagu. Saya belajar cara agar pesan dan emosi dapat tersampaikan.",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/timeles.mp4",
   },
   {
     number: "03",
     title: "Video Editing",
     description:
-      "Combining footage, music, pacing, and visual elements into cohesive visual sequences.",
-    image: "/logo/canvaLogo.jpg",
+      "Saya menguasai dasar-dasar video editing. Saya belajar cara memberikan emosi dalam viedo dan merangkai berbagai potongan video mentah menjadi satu kesatuan cerita yang utuh",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.11.mp4",
   },
   {
     number: "04",
-    title: "Visual Effects",
+    title: "Developer",
     description:
-      "Enhancing visuals through compositing, effects, atmosphere, and visual treatment.",
-    image: "/logo/canvaLogo.jpg",
+      "Sebagai pemula, saya mempelajari berbagai logika coding dan macam bahasa pemrograman, serta bagaimana sebuah aplikasi atau situs web dibangun dari nol.",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/28320-369325356_medium.mp4",
   },
   {
     number: "05",
-    title: "Visual Design",
+    title: "Typography",
     description:
-      "Building compositions through typography, layout, hierarchy, color, and visual direction.",
-    image: "/logo/canvaLogo.jpg",
+      "Saya belajar jika memilih jenis huruf tidak boleh asal-asalan, namun harus memperhatikan readability agar pesan di dalam teks dapat ditangkap oleh pembaca.",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/setiapWaktu.mp4",
   },
   {
     number: "06",
     title: "Color & Compositing",
     description:
-      "Refining visuals through color treatment, layering, blending, and consistent visual tone.",
-    image: "/logo/canvaLogo.jpg",
+      "Saya sedang mempelajari color and compositing untuk tahap akhir produksi video. Selain itu, saya juga berlatih memperbaiki warna (color correction) dan memberikan nuansa tertentu (color grading) untuk membangun suasana di dalam video maupun foto.",
+    video: "https://obuuopfvemmaulflxatz.supabase.co/storage/v1/object/public/Video/WhatsApp%20Video%202026-07-27%20at%2022.14.10%20(1).mp4",
   },
 ];
 
@@ -148,30 +150,51 @@ export function Skills() {
           key={skill.number}
           variants={fadeUp}
           className={`
-            relative flex flex-col justify-between
-            overflow-hidden
-            rounded-xl
-            border border-neutral-200 dark:border-neutral-800
-            mb-1
-            ml-1
+          group
+          relative
+          flex
+          flex-col
+          justify-between
+          overflow-hidden
+          rounded-xl
+          border
+         border-neutral-800
+         bg-[#111]
+            "
             ${isHero || isLast ? "col-span-2" : "col-span-1"}
             ${isHero ? "min-h-[330px] sm:min-h-[360px]" : "min-h-[220px] sm:min-h-[250px]"}
             p-5 sm:p-7
           `}
         >
 
-          {skill.image && (
-            <div className="absolute inset-0 z-0 overflow-hidden">
-             <Image
-               src={skill.image}
-               alt={skill.title}
-               fill
-               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-               className="object-cover object-center opacity-35 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/75 to-transparent" />
-            </div>
-          )}
+         <div className="absolute inset-0 overflow-hidden rounded-xl">
+
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    poster={skill.poster}
+    className="
+      absolute
+      inset-0
+      md:object-[center_30%]
+      h-full
+      w-full
+      opacity-80
+      object-cover
+      blur-[1px]
+      transition-all
+      duration-700
+    "
+  >
+    <source src={skill.video} type="video/mp4" />
+  </video>
+
+  <div className="absolute inset-0 bg-black/45" />
+  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-black/20 to-black/80" />
+</div>
 
           {/* Content */}
 
@@ -184,6 +207,9 @@ export function Skills() {
                 uppercase
                 tracking-[-0.04em]
                 leading-[0.9]
+                z-10
+                text-white
+                mix-blend-difference
 
                 ${
                   isHero
