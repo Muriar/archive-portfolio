@@ -56,7 +56,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/timeless"
+        href: "/Karya/Detail/timeless"
       }
     ]
   },
@@ -82,7 +82,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/multo"
+        href: "/Karya/Detail/multo"
       }
     ]
   },
@@ -108,7 +108,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Ramai-Sepi-Bersama"
+        href: "/Karya/Detail/Ramai-Sepi-Bersama"
       }
     ]
   },
@@ -134,7 +134,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/setiap-waktu"
+        href: "/Karya/Detail/setiap-waktu"
       }
     ]
   },
@@ -160,7 +160,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Curhat-Dikit"
+        href: "/Karya/Detail/Curhat-Dikit"
       }
     ]
   },
@@ -186,7 +186,7 @@ export const galleryProjects: GalleryProject[] = [
     links: [
       {
         label: "Open detail",
-        href: "/Detail/Somebody-Pleasure"
+        href: "/Karya/Detail/Somebody-Pleasure"
       }
     ]
   },
@@ -213,43 +213,43 @@ export const skills = [
     name: "Alight Motion",
     level: 95,
     description: "Tools yang paling sering saya gunakan untuk membuat animasi berbasis vektor, motion graphics, dan efek visual. Saya memanfaatkan fitur keyframe, kebanyakan projek yang saya buat berasal dari Alight Motion. dah banyak banget sih, tapi saya masih belajar untuk menguasai fitur-fitur lanjutan seperti efek partikel, ekspresi animasi, dan integrasi audio yang lebih kompleks.",
-    logo: "/alightmotionLogo.jpg" 
+    logo: "/logo/alightmotionLogo.jpg" 
   },
   {
     name: "After Effects",
     level: 13,
     description: "Saya berada pada tingkat pemula dalam penggunaan After Effects. Saya menggunakan software ini untuk membuat animasi yang lebih kompleks yang tidak dapat dicapai dengan Alight Motion, seperti animasi 3D sederhana, efek visual lanjutan, dan integrasi dengan software lain. Saya masih dalam tahap belajar untuk menguasai fitur-fitur lanjutan seperti ekspresi, scripting, dan compositing yang lebih kompleks.",
-    logo: "/aftereffectLogo.jpg"
+    logo: "/logo/aftereffectLogo.jpg"
   },
   {
     name: "Capcut",
     level: 67,
     description: "Software yang saya gunaka hanya ketika mendapatkan project video yang harus diedit dengan cepat. Karena banyaknya fitur yang dibuat premium jadi saya cukup jarang menggunakan Capcut, terbatas pada projek sekolah saja hehehe",
-    logo: "/capcutLogo.jpg"
+    logo: "/logo/capcutLogo.jpg"
   },
   {
     name: "Canva",
     level: 80,
     description: "Sering saya gunakan untuk mendapatkan element juga membuat element baru untuk kepentingan bahan mentah editing untuk memperindah visual, tidak hanya itu Canva saya gunakan juga bila projek memerlukan storyboard yang cukup sering saya temui belakangan ini",
-    logo: "/canvaLogo.jpg"
+    logo: "/logo/canvaLogo.jpg"
   },
   {
     name: "Lightroom",
     level: 50,
     description: "Pada software ini saya masih berada pada tingkatan pemula, namun tetao dapat mengedit suatu foti sesuai suasana yang diinginkan apabila diperlukan",
-    logo: "/lightroomLogo.jpg"
-  },
-  {
-    name: "Valorant",
-    level: 10,
-    description: "Kalo ga ngegame meledak ini kepala yang manusiawi dong jadi saya main game ini untuk menghilangkan penat, tapi kalo lagi ada projek yang harus dikerjakan saya ga main game ini dulu, karena saya tau prioritas itu penting 😜",
-    logo: "/valorantLogo.jpg"
+    logo: "/logo/lightroomLogo.jpg"
   },
   {
     name: "Visual Studio Code",
     level: 88,
     description: "Pengembangan web dan pemrograman saya lakukan disini. Saya menyukai fleksibilitas dan ekosistem plugin yang kaya dan sangat berguna untuk meningkatkan kecepatan produktivitas, yang memungkinkan saya untuk menyesuaikan lingkungan kerja sesuai kebutuhan secara cepat dan efisien, namun saya masih kekurangan pengalaman dalam beberapa area, seperti pada debugging yang masih sering dibantu oleh AI.",
-    logo: "/vscodeLogo.jpg" 
+    logo: "/logo/vscodeLogo.jpg" 
+  },
+  {
+    name: "Valorant",
+    level: 10,
+    description: "Kalo ga ngegame meledak ini kepala yang manusiawi dong jadi saya main game ini untuk menghilangkan penat, tapi kalo lagi ada projek yang harus dikerjakan saya ga main game ini dulu, karena saya tau prioritas itu penting 😜",
+    logo: "/logo/valorantLogo.jpg"
   }
 ];
 

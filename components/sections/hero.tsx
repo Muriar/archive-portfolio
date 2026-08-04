@@ -148,26 +148,19 @@ export function Hero() {
                 {/* Teks Pendukung */}
                 <div className="text-left">
                  <h5 className="text-sm font-medium text-stone-200 pt-2">Rewriting Icarus by Fiona</h5>
-                 <p className="text-xs font-latin font-bold text-neutral-500 mt-0.5">
-                  &apos;Icarus laughed as he fell.<br/>
+                 <p className="text-1xl font-latin font-bold text-neutral-500 mt-0.5">
+                  &quot;Icarus laughed as he fell.<br/>
                   Threw his head back and yelled into the winds, <br/>
                   arms spread wide,<br/>
-                  teeth bared to the world.&apos;<br/><br/>
-                  &quot;Di dunia yang menuntut kepatuhan, ia memilih menulis ulang takdirnya dengan tangannya sendiri. Ketika lilin yang meleleh membakar tubuhnya dan sayapnya hancur membara, ia tidak berteriak ketakutan, melainkan tertawa bebas yang menantang dunia dan seisinya. Baginya, rasa sakit dari lelehan lilin yang membakar kulit tak sebanding dengan kemegahan dunia keemasan yang berhasil dia sentuh. Dia tidak jatuh sebagai korban yang malang, melainkan sebagai pemberontak yang dengan sadar memilih hancur demi kebebasan mutlak. Ia yang sadar dan memilih jatuh dengan kebebasan dibandingkan terkekang oleh sebuah batasan
-                 &quot;</p>
+                  teeth bared to the world.&quot;<br/><br/>
+                  &quot;Di dunia yang menuntut kepatuhan, ia memilih menulis ulang takdir dengan tangannya sendiri. Ketika lilin yang meleleh membakar tubuhnya dan sayapnya hancur membara, ia tidak berteriak ketakutan, melainkan tertawa bebas layaknya seseorang yang berhasil menipu takdir, meski hanya untuk sesaat. Baginya, terbakar adalah harga yang pantas untuk mendekap kemegahan sang surya dengan tangannya sendiri, sesuatu yang selama ini hanya mampu ia pandangi dari kejauhan. Dia tidak jatuh sebagai korban yang malang, melainkan sebagai bintang jatuh yang memilih terbakar daripada menghabiskan keabadiannya dalam kegelapan.&quot;<br/><br/> Sebuah pernyataan sunyi bahwa keindahan tertinggi justru lahir ketika ia berani runtuh demi mendekap dunianya sendiri.
+                 </p>
                 </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </motion.div>
-
-      {/* Teks Status Footer Tetap di Bawah */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none">
-        <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-neutral-400/70 dark:text-neutral-500/60 whitespace-nowrap text-center">
-          website masih berada dalam tahap pengembangan
-        </p>
-      </div>
     </section>
   );
 }

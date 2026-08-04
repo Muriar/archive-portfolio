@@ -6,9 +6,9 @@ import {stagger} from "@/lib/motion";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
-import logoInstagramImg from "../../public/igaje.jpg";
-import logoWhatsappImg from "../../public/Whatsapp.jpg";
-import logoEmailImg from "../../public/emailaje.jpg";
+import logoInstagramImg from "../../public/logo/igaje.jpg";
+import logoWhatsappImg from "../../public/logo/Whatsapp.jpg";
+import logoEmailImg from "../../public/logo/emailaje.jpg";
 
 export function Contact() {
   return (
