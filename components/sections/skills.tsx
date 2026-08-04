@@ -157,9 +157,11 @@ export function Skills() {
           justify-between
           overflow-hidden
           rounded-xl
+          mb-1
+          ml-1
           border
-         border-neutral-800
-         bg-[#111]
+          border-neutral-400
+          bg-[#111]
             "
             ${isHero || isLast ? "col-span-2" : "col-span-1"}
             ${isHero ? "min-h-[330px] sm:min-h-[360px]" : "min-h-[220px] sm:min-h-[250px]"}
@@ -250,7 +252,7 @@ export function Skills() {
 
         <motion.div
           variants={fadeUp}
-          className="relative z-10 mt-24"
+          className="relative z-10 mt-20"
         >
           <div className="mb-7 flex items-end justify-between border-b border-neutral-200 pb-4 dark:border-neutral-800">
             <div>
@@ -307,7 +309,8 @@ export function Skills() {
                           <button
                             type="button"
                             onClick={() => toggleSkill(skill.name)}
-                            className="flex w-full z-[10] items-center justify-between gap-4 p-5 text-left bg-[#11131a]"
+                            className="flex w-full z-[10] items-center justify-between gap-4 p-5 text-left bg-[#00000a]
+                            "
                             aria-expanded={isOpen}
                           >
                             <div className="flex items-center gap-4">
@@ -369,7 +372,7 @@ export function Skills() {
                                   ease: [0.22, 1, 0.36, 1],
                                 }}
                               >
-                                <div className="border-t border-neutral-200 px-5 pb-6 pt-5 dark:border-neutral-800 bg-[#11131a]">
+                                <div className="border-t border-neutral-200 px-5 pb-6 pt-5 dark:border-neutral-800 bg-[#00000a]">
                                   <div className="grid gap-6 sm:grid-cols-[auto_1fr]">
                                     {/* Logo */}
 
