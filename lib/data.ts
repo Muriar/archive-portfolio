@@ -240,16 +240,16 @@ export const skills = [
     logo: "/logo/lightroomLogo.jpg"
   },
   {
-    name: "Valorant",
-    level: 10,
-    description: "Kalo ga ngegame meledak ini kepala yang manusiawi dong jadi saya main game ini untuk menghilangkan penat, tapi kalo lagi ada projek yang harus dikerjakan saya ga main game ini dulu, karena saya tau prioritas itu penting 😜",
-    logo: "/logo/valorantLogo.jpg"
-  },
-  {
     name: "Visual Studio Code",
     level: 88,
     description: "Pengembangan web dan pemrograman saya lakukan disini. Saya menyukai fleksibilitas dan ekosistem plugin yang kaya dan sangat berguna untuk meningkatkan kecepatan produktivitas, yang memungkinkan saya untuk menyesuaikan lingkungan kerja sesuai kebutuhan secara cepat dan efisien, namun saya masih kekurangan pengalaman dalam beberapa area, seperti pada debugging yang masih sering dibantu oleh AI.",
     logo: "/logo/vscodeLogo.jpg" 
+  },
+  {
+    name: "Valorant",
+    level: 10,
+    description: "Kalo ga ngegame meledak ini kepala yang manusiawi dong jadi saya main game ini untuk menghilangkan penat, tapi kalo lagi ada projek yang harus dikerjakan saya ga main game ini dulu, karena saya tau prioritas itu penting 😜",
+    logo: "/logo/valorantLogo.jpg"
   }
 ];
 

@@ -271,13 +271,7 @@ export function Skills() {
           </div>
 
           <div className="grid grid-cols-1 gap-10">
-            {/* Creative Tools */}
-
             <div>
-              <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
-                Creative Tools
-              </p>
-
               <div className="space-y-2">
                 {skills
                   .filter(
@@ -285,11 +279,7 @@ export function Skills() {
                       name: string;
                       description: string;
                       logo: string;
-                    }) =>
-                      !["Visual Studio Code", "Valorant"].includes(
-                        skill.name
-                      )
-                  )
+                    }) => skill.name)
                   .map(
                     (skill: {
                       name: string;
@@ -464,6 +454,17 @@ function getSoftwareTags(name: string) {
       "Color Grading",
       "Retouching",
     ],
+
+    "Visual Studio Code": [
+      "Coding",
+      "Debugging",
+      "Development"
+    ],
+    Valorant: [
+      "Gaming",
+      "Stress",
+      "Game Femboy"
+    ]
   };
 
   return tags[name] ?? ["Creative", "Visual", "Editing"];
