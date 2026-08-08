@@ -255,39 +255,51 @@ export const skills = [
 
 export const timeline = [
   {
-    date: "2026 - Sekarang ~(6 Bulan)",
-    title: "Design Graphics",
+    chapter: "01 / Perkenalan",
+    date: "Awal perjalanan",
+    title: "Saya tumbuh dari rasa ingin tahu yang sederhana",
     description:
-      "Dari video, saya mulai tertarik pada sisi visual yang lebih luas. Menggunakan Canva dan Photoshop, saya mempelajari prinsip-prinsip dasar desain seperti tipografi, komposisi, dan hierarki visual — fondasi yang membentuk cara saya melihat dan menciptakan sebuah karya.",
-    borderColor: "rgba(168, 85, 247, 0.25)", // Ungu
-    accentColor: "text-purple-400 group-hover:text-purple-300",
-    glowColor: "rgba(168, 85, 247, 0.12)"
+      "Saya bukan orang yang lahir dengan jalan yang sudah jelas. Saya tumbuh dari rasa penasaran terhadap visual, cerita, dan cara orang berinteraksi dengan dunia digital.",
+    borderColor: "rgba(168, 85, 247, 0.35)",
+    accentColor: "text-purple-400",
+    glowColor: "rgba(168, 85, 247, 0.12)",
+    image: "/Photo1.jpeg",
+    highlights: ["Pencarian jati diri", "Belajar lewat pengalaman", "Bukan sekadar keterampilan, tapi cara melihat"]
   },
   {
-    date: "2024 - 2026 ~(2 Tahun)",
-    title: "Motion Graphics",
+    chapter: "02 / Pendidikan Terakhir",
+    date: "Fondasi akademik",
+    title: "Pendidikan terakhir memberi arah, tapi rasa ingin tahu memberi gerak",
     description:
-      "Saya mendalami motion graphics menggunakan After Effects dan Alight Motion. Belajar menggerakkan elemen visual dengan memperhatikan timing dan transisi — karena bagi saya, animasi yang baik bukan sekadar bergerak, tapi bercerita.",
-    borderColor: "rgba(236, 72, 153, 0.25)", // Pink
-    accentColor: "text-pink-400 group-hover:text-pink-300",
-    glowColor: "rgba(236, 72, 153, 0.12)"
+      "Di titik ini, pendidikan terakhir saya menjadi fondasi. Saya belajar disiplin, memahami cara berpikir, dan melihat bahwa semua kreativitas punya struktur di baliknya.",
+    borderColor: "rgba(20, 184, 166, 0.35)",
+    accentColor: "text-teal-400",
+    glowColor: "rgba(20, 184, 166, 0.12)",
+    image: "/profile.jpg",
+    highlights: ["Fondasi belajar", "Konsistensi lebih penting", "Melihat masalah sebagai peluang"]
   },
   {
-    date: "2024 - 2026 ~(2 Tahun)",
-    title: "Web Design",
+    chapter: "03 / Jejak Digital",
+    date: "Visual & teknologi",
+    title: "Saya mengisi ruang digital dengan apa yang saya pelajari",
     description:
-      "Ketertarikan saya terhadap cara kerja web mendorong saya untuk mulai belajar dari nol. Dimulai dari HTML & CSS, kemudian berkembang ke JavaScript, Tailwind CSS, TypeScript, PHP, dan Python. Perjalanan ini mengajarkan saya bahwa membangun sebuah website bukan hanya soal kode, tapi juga soal pengalaman pengguna.",
-    borderColor: "rgba(20, 184, 166, 0.25)", // Teal
-    accentColor: "text-teal-400 group-hover:text-teal-300",
-    glowColor: "rgba(20, 184, 166, 0.12)"
+      "Dari editing video, desain, motion graphics, sampai web design dan pengalaman pengguna, saya terus menjejaki banyak bidang yang saling melengkapi. Setiap hal yang saya pelajari kemudian saya gunakan untuk membentuk identitas visual saya sendiri.",
+    borderColor: "rgba(236, 72, 153, 0.35)",
+    accentColor: "text-pink-400",
+    glowColor: "rgba(236, 72, 153, 0.12)",
+    images: ["/icarusDraw.jpg", "/Icarus.png"],
+    highlights: ["Video editing", "Motion graphics", "Web design", "UI/UX thinking", "Cyber security"]
   },
   {
-    date: "2026 - Sekarang ~(4 Bulan)",
-    title: "Cyber Security",
+    chapter: "04 / Dokumentasi & Sertifikat",
+    date: "Bukti kecil dari proses",
+    title: "Jejak-Jejak yang saya simpan sebagai pengingat",
     description:
-      "Saat ini saya sedang meraba lebih dalam tentang ethical hacking dan penetration testing, karena saya percaya bahwa memahami cara kerja serangan adalah kunci untuk membangun pertahanan yang efektif. Btw saya masih pemula banget, jadi jangan terlalu berharap banyak ya.",
-    borderColor: "rgba(245, 158, 11, 0.25)", // Amber/Kuning Oranye
-    accentColor: "text-amber-400 group-hover:text-amber-300",
-    glowColor: "rgba(245, 158, 11, 0.12)"
+      "Saya menyimpan beberapa dokumen, karya, dan momen penting sebagai bentuk jejak. Bukan untuk pamer, tetapi untuk mengingat bahwa setiap hasil kecil adalah bagian dari proses yang sedang berkembang.",
+    borderColor: "rgba(245, 158, 11, 0.35)",
+    accentColor: "text-amber-400",
+    glowColor: "rgba(245, 158, 11, 0.12)",
+    images: ["/Photo1.jpeg", "/profile.jpg"],
+    highlights: ["Dokumentasi karya", "Sertifikat sebagai pengingat", "Perjalanan yang belum selesai"]
   }
 ];

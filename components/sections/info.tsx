@@ -20,8 +20,10 @@
     ];
 
     return (
-         <section id="info" className="py-12 bg-slate-50 dark:bg-slate-900 rounded-2xl px-6">
-      <div className="max-w-6xl mx-auto">
+         <section 
+         id="info" 
+         className="absolute w-full h-full mt-8 bg-slate-50 dark:bg-slate-900 rounded-2xl px-6">
+      <div className="mx-auto">
         <motion.div
            variants={stagger}
            initial="hidden"
@@ -38,6 +40,11 @@
             className="mt-3 text-lg text-slate-500 dark:text-slate-400">
             Beberapa fakta menarik selama proses perancangan dan vibe coding hwehwehwe.
           </motion.p>
+          <motion.h2 
+            variants={fadeUp}
+            className="text-3xl font-extrabold text-slate-800 dark:text-white sm:text-4xl">
+            Blom Jadi
+          </motion.h2>
          </motion.div>
     
          {/* mobile preview */}

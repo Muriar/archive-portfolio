@@ -1,11 +1,16 @@
-import Info from "@/components/sections/info";
+import dynamic from "next/dynamic";
 import App from "@/components/site-header";
+
+const ScrollDissolveRevealDemo = dynamic(
+  () => import("@/components/sections/Playground").then((m) => m.ScrollDissolveRevealDemo),
+  { ssr: false }
+);
 
 export default function Page() {
   return (
-    <main className="min-h-screen overflow-hidden bg-stone-100 text-neutral-950 transition-colors duration-500 dark:bg-neutral-950 dark:text-stone-50">
+    <main>
       <App />
-      <Info />
+      <ScrollDissolveRevealDemo />
     </main>
   );
 }
