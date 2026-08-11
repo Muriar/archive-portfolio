@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import BgParticle from "./Background/bgParticle";
 
 interface MenuProps {
   onSectionChange?: (index: number) => void;
@@ -10,7 +11,7 @@ interface MenuProps {
 
 type StorySectionData = {
   id: number;
-  eyebrow: string;
+  section: string;
   title: string;
   body: string;
   accent: string;
@@ -23,31 +24,31 @@ type StorySectionData = {
 const storySections: StorySectionData[] = [
   {
     id: 1,
-    eyebrow: "Awal mula",
+    section: "Awal mula",
     title: "Jejak digitalku dimulai dari rasa ingin tahu",
     body:
       "Sebelum menjadi seorang editor, developer, dan pembuat visual, saya tumbuh dari rasa penasaran yang sederhana. Saya belajar karena ingin tahu bagaimana dunia digital bekerja dan mengapa tiap karya bisa terasa hidup.",
     accent: "text-stone-100",
     background: "from-[#060816] via-[#111b34] to-[#2c3152]",
     layout: "centered",
-    images: ["/Photo1.jpeg", "/profile.jpg"],
+    images: [],
     highlight: "Motion • Editing • Coding"
   },
   {
     id: 2,
-    eyebrow: "Pendidikan",
+    section: "Pendidikan",
     title: "Fondasi akademik memberi arah, rasa ingin tahu memberi gerak",
     body:
       "Di titik ini, pendidikan menjadi fondasi. Saya belajar disiplin, memahami struktur, dan melihat bahwa kreativitas bukan kebalikan dari logika, melainkan sesuatu yang tetap butuh susunan agar berkembang dengan kuat.",
     accent: "text-cyan-200",
-    background: "from-[#07131a] via-[#103441] to-[#0e4d67]",
+    background: "from-[#060816] via-[#111b34] to-[#2c3152]",
     layout: "split",
     images: ["/Photo1.jpeg"],
     highlight: "Belajar • Berproses • Bertumbuh"
   },
   {
     id: 3,
-    eyebrow: "Jejak digital",
+    section: "Jejak digital",
     title: "Saya mengisi ruang digital dengan visual, eksperimen, dan pengalaman",
     body:
       "Dari editing video, motion graphics, desain visual, hingga web dan software, saya terus mencoba menggabungkan banyak bidang. Setiap pelajaran yang saya ambil kemudian saya gunakan untuk membentuk cara saya bercerita lewat karya.",
@@ -59,7 +60,7 @@ const storySections: StorySectionData[] = [
   },
   {
     id: 4,
-    eyebrow: "Dokumentasi",
+    section: "Dokumentasi",
     title: "Setiap hasil kecil adalah bukti bahwa perjalanan belum selesai",
     body:
       "Saya menyimpan jejak-jejak kecil sebagai pengingat bahwa proses itu penting. Dokumen, karya, dan pengalaman sehari-hari menjadi bagian dari narasi yang terus berkembang hingga hari ini.",
@@ -83,53 +84,71 @@ function StorySection({ section, index, onClick }: { section: StorySectionData; 
   const blur = useTransform(scrollYProgress, [0, 0.45, 1], [28, 0, 24]);
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [32, 0, 20]);
 
-  const layoutClass =
-    section.layout === "centered"
-      ? "flex flex-col items-center text-center"
-      : section.layout === "stacked"
-        ? "flex flex-col gap-8"
-        : "grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]";
+  // Cek apakah section ini memiliki gambar atau tidak
+  const hasImages = section.images && section.images.length > 0;
+
+  // Jika ada gambar -> Layout Grid kiri-kanan (seperti sebelumnya)
+  // Jika TIDAK ada gambar -> Layout flex-col di tengah layar
+  const layoutClass = hasImages 
+    ? "grid items-center gap-4 sm:gap-8 lg:gap-16 grid-cols-[1.2fr_0.8fr] sm:grid-cols-[1fr_1fr] text-left" 
+    : "flex flex-col items-center justify-center text-center max-w-3xl mx-auto";
 
   return (
     <motion.section
       ref={sectionRef}
       onClick={onClick}
       data-index={index}
-      className="relative flex h-screen w-full snap-start items-center justify-center overflow-hidden px-5 py-16 text-stone-100 sm:px-6 lg:px-8"
+      className="relative flex h-full w-full snap-start items-center justify-center overflow-hidden px-4 py-16 text-stone-100 lg:px-8"
     >
       <motion.div
-        className={`absolute inset-0 bg-gradient-to-br ${section.background}`}
-        style={{ opacity: backgroundOpacity, scale: backgroundScale, filter: `blur(${blur}px)` }}
+        className={`absolute inset-0 bg-gradient-to-t from-transparent via-[#1a1a1a] to-[#05070b] ${section.background}`}
+        style={{ 
+          opacity: backgroundOpacity, 
+          scale: backgroundScale, 
+          filter: `blur(${blur}px)` 
+        }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_44%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.18),transparent_35%,transparent_70%,rgba(0,0,0,0.1))]" />
-
+      
+      <BgParticle />
+      
       <motion.div className={`relative z-10 w-full max-w-6xl ${layoutClass}`} style={{ y }}>
-        <div className={section.layout === "centered" ? "mx-auto max-w-3xl space-y-6" : "space-y-5"}>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.45em] text-stone-400">
-            {section.eyebrow}
+        
+        {/* BAGIAN TEKS */}
+        <div className={`space-y-3 sm:space-y-5 ${!hasImages ? "flex flex-col items-center mx-auto" : ""}`}>
+          <p className="text-[8px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.45em] text-stone-400">
+            {section.section}
           </p>
-          <h2 className={`text-[clamp(2rem,5.6vw,3.4rem)] font-semibold leading-[0.95] tracking-[-0.04em] ${section.accent}`}>
+          <h2 className={`text-lg sm:text-[clamp(2rem,5.6vw,3.4rem)] font-semibold leading-tight tracking-[-0.04em] ${section.accent}`}>
             {section.title}
           </h2>
-          <p className="max-w-2xl text-sm leading-7 text-stone-300 sm:text-base">
+          <p className={`text-[11px] leading-5 text-stone-300 sm:text-base sm:leading-7 ${!hasImages ? "max-w-2xl" : ""}`}>
             {section.body}
           </p>
-          <p className="text-[11px] uppercase tracking-[0.35em] text-stone-400/80">
+          <p className="text-[8px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.35em] text-stone-400/80 mt-2">
             {section.highlight}
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          {section.images.map((image, imageIndex) => (
-            <div
-              key={`${section.id}-${imageIndex}`}
-              className="relative aspect-[4/3] overflow-hidden bg-stone-900/70"
-            >
-              <Image src={image} alt={`${section.title} visual ${imageIndex + 1}`} fill className="object-cover" unoptimized />
-            </div>
-          ))}
-        </div>
+        {/* BAGIAN GAMBAR (Hanya di-render jika array gambar tidak kosong) */}
+        {hasImages && (
+          <div className="flex flex-col gap-3">
+            {section.images.map((image, imageIndex) => (
+              <div
+                key={`${section.id}-${imageIndex}`}
+                className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg sm:rounded-xl bg-stone-900/70 shadow-2xl"
+              >
+                <Image 
+                  src={image} 
+                  alt={`${section.title} visual ${imageIndex + 1}`} 
+                  fill 
+                  className="object-cover transition-transform duration-500 hover:scale-105" 
+                  unoptimized 
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        
       </motion.div>
     </motion.section>
   );
