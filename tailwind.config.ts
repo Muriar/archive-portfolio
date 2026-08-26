@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        latin: ["var(--font-latin)", "Caveat"]
-      },
+  sans: ["var(--font-sans)", "Playfair Display", "serif"],
+  latin: ["var(--font-latin)", "Caveat", "cursive"]
+},
       boxShadow: {
         soft: "0 24px 80px rgba(0, 0, 0, 0.08)"
       }
