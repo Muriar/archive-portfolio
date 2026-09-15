@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, ArrowUpRight, X } from "lucide-react";
 import { useState } from "react";
 import { chapters } from "@/lib/data";
-import { join } from "path";
 
 type GalleryImage = { src: string; alt: string; caption: string; detail: string };
-
 type Chapter = {
   id: string;
   eyebrow: string;
@@ -15,286 +14,80 @@ type Chapter = {
   description: string[];
   tone: "light" | "dark";
   images: GalleryImage[];
-  galleryFirst?: boolean;
-  story?: {
-    eyebrow?: string;
-    paragraphs: string[];
-  };
+  story?: { eyebrow?: string; paragraphs: string[] };
 };
 
-function HorizontalGallery({ images, dark }: { images: GalleryImage[]; dark: boolean }) {
+const palettes = [
+  { paper: "bg-[#f6f0e5]", ink: "text-[#18212f]", line: "border-[#18212f]", accent: "bg-[#ff7455]", wash: "bg-[#ffc6b7]" },
+  { paper: "bg-[#]", ink: "text-[#f8f4ec]", line: "border-[#f8f4ec]", accent: "bg-[#ffc6b7]", wash: "bg-[#a8eb83]" },
+  { paper: "bg-[#f6d95f]", ink: "text-[#22201d]", line: "border-[#22201d]", accent: "bg-[#ef7257]", wash: "bg-[#f8e9a2]" },
+  { paper: "bg-[#e4e1f8]", ink: "text-[#282344]", line: "border-[#282344]", accent: "bg-[#8e7bea]", wash: "bg-[#c5bdf5]" },
+];
+
+function ImageViewer({ image, onClose }: { image: GalleryImage; onClose: () => void }) {
+  return (
+    <motion.div className="fixed inset-0 z-[100] grid place-items-end bg-[#18212f]/60 px-4 py-4 backdrop-blur-sm sm:place-items-center sm:p-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
+      
+      <motion.div initial={{ opacity: 0, y: 18, rotate: -1 }} animate={{ opacity: 1, y: 0, rotate: 0 }} exit={{ opacity: 0, y: 18 }} transition={{ duration: 0.25 }} onClick={(event) => event.stopPropagation()} className="grid w-full max-w-4xl overflow-hidden border-2 border-[#18212f] bg-[#fffdf7] shadow-[10px_10px_0_#ff7455] sm:grid-cols-[1.1fr_.9fr]">
+        <div className="relative min-h-64 sm:min-h-[30rem]">
+          <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 100vw, 640px" className="object-cover" />
+        </div>
+        <div className="flex flex-col justify-between gap-10 p-6 sm:p-8">
+          <div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#5c6da9]">{image.caption}</p><p className="mt-5 font-serif text-2xl leading-tight italic text-[#18212f]">{image.detail}</p></div>
+          <button type="button" onClick={onClose} className="inline-flex items-center gap-2 self-start text-[10px] font-bold uppercase tracking-[.16em] hover:text-[#ff7455]"><X className="h-4 w-4" /> Tutup</button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function Gallery({ images, palette }: { images: GalleryImage[]; palette: (typeof palettes)[number] }) {
   const [active, setActive] = useState<GalleryImage | null>(null);
   const reduceMotion = useReducedMotion();
-  const loop = [...images, ...images];
-
   return (
-    <div className="relative overflow-hidden py-3">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-current to-transparent opacity-10 sm:w-20" />
-      <motion.div
-        className="flex w-max gap-3 px-5 sm:gap-5 sm:px-10"
-        animate={reduceMotion ? undefined : { x: ["0%", "-50%"] }}
-        transition={{ duration: 34, ease: "linear", repeat: Infinity }}
-      >
-        {loop.map((image, index) => (
-          <button
-            key={`${image.src}-${index}`}
-            type="button"
-            onClick={() => setActive(image)}
-            className={`group relative h-40 w-56 shrink-0 overflow-hidden rounded-md border text-left shadow-lg transition-transform duration-500 hover:z-10 hover:scale-[1.035] sm:h-52 sm:w-80 ${dark ? "border-white/15 bg-white/5" : "border-black/15 bg-black/5"}`}
-          >
-            <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 224px, 320px" className="object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0" />
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-5 text-[9px] uppercase tracking-[0.22em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{image.caption}</span>
-          </button>
-        ))}
-      </motion.div>
+    <>
+      <div className="mt-10 overflow-hidden border-y-2 border-current py-4 sm:mt-14">
+        <motion.div className="flex w-max gap-4" animate={reduceMotion ? undefined : { x: ["0%", "-50%"] }} transition={{ duration: 42, ease: "linear", repeat: Infinity }}>
+          {[...images, ...images].map((image, index) => (
+            <button key={`${image.src}-${index}`} type="button" onClick={() => setActive(image)} className="group relative h-48 w-72 shrink-0 overflow-hidden border-2 border-current text-left shadow-[4px_4px_0_current] transition-transform duration-300 hover:-translate-y-1 sm:h-56 sm:w-96">
+              <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 288px, 384px" className="object-cover transition duration-500 group-hover:scale-105" />
+              <span className={`absolute inset-x-0 bottom-0 px-4 py-3 text-[10px] font-bold uppercase tracking-[.16em] ${palette.accent} text-[#18212f]`}>{image.caption}</span>
+              <ArrowUpRight className="absolute right-3 top-3 h-5 w-5 rounded-full bg-[#fffdf7] p-1 text-[#18212f] opacity-0 transition-opacity group-hover:opacity-100" />
+            </button>
+          ))}
+        </motion.div>
+      </div>
+      <AnimatePresence>{active && <ImageViewer image={active} onClose={() => setActive(null)} />}</AnimatePresence>
+    </>
+  );
+}
 
-      <AnimatePresence>
-        {active && (
-          <motion.div
-            className="fixed inset-0 z-[9999] flex items-end justify-center bg-black/35 px-5 pb-8 backdrop-blur-[2px] sm:items-center sm:pb-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActive(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 22, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 22, scale: 0.98 }}
-              transition={{ duration: 0.22 }}
-              onClick={(event) => event.stopPropagation()}
-              className={`relative grid w-full max-w-3xl overflow-hidden rounded-md border shadow-2xl sm:grid-cols-[0.95fr_1fr] ${dark ? "border-white/15 bg-[#11110f] text-stone-100" : "border-black/15 bg-[#eeeae3] text-neutral-950"}`}
-            >
-              <div className="relative min-h-56 sm:min-h-80">
-                <Image src={active.src} alt={active.alt} fill sizes="(max-width: 640px) 100vw, 384px" className="object-cover" />
-              </div>
-              <div className="flex flex-col justify-between gap-8 p-6 sm:p-8">
-                <div>
-                  <p className="mb-3 text-[10px] uppercase tracking-[0.28em] opacity-60">{active.caption}</p>
-                  <p className="text-base leading-relaxed sm:text-lg">{active.detail}</p>
-                </div>
-                <button type="button" aria-label="Close image detail" onClick={() => setActive(null)} className="self-start text-[10px] uppercase tracking-[0.24em] opacity-65 transition hover:opacity-100">Close</button>
-              </div>
+function ChapterCard({ chapter, index }: { chapter: Chapter; index: number }) {
+  const palette = palettes[index % palettes.length];
+  const reduceMotion = useReducedMotion();
+  const chapterNumber = String(index + 1).padStart(2, "0");
+  return (
+    <section id={chapter.id} className={`${palette.paper} ${palette.ink} relative border-b-2 ${palette.line} overflow-hidden`}>
+      <div className={`pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full ${palette.wash} opacity-65 blur-2xl`} />
+      <div className="relative mx-auto max-w-[1440px] px-5 py-20 sm:px-9 sm:py-28 lg:px-14 lg:py-32">
+        <div className="grid gap-12 lg:grid-cols-[130px_minmax(0,1fr)] lg:gap-16">
+          <div className="flex items-center gap-4 lg:block">
+            <span className={`grid h-14 w-14 place-items-center rounded-full border-2 ${palette.line} ${palette.accent} text-sm font-bold text-[#18212f] lg:h-20 lg:w-20 lg:text-lg`}>{chapterNumber}</span>
+            <div className={`h-px flex-1 ${chapter.tone === "dark" ? "bg-white/35" : "bg-black/25"} lg:mt-6 lg:h-24 lg:w-px`} />
+            <p className="text-[10px] font-bold uppercase tracking-[.18em] opacity-65 lg:mt-6">Bab {chapterNumber}</p>
+          </div>
+          <div>
+            <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: reduceMotion ? 0 : 0.65 }}>
+              <p className="text-[10px] font-bold uppercase tracking-[.22em] opacity-65">{chapter.eyebrow}</p>
+              <h2 className="mt-7 max-w-5xl font-serif text-[clamp(3.5rem,8vw,8rem)] leading-[.8] tracking-[-.065em]">
+                {chapter.title.map((line, titleIndex) => <span key={line} className={titleIndex === 1 ? "block italic" : "block"}>{line}</span>)}
+              </h2>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function ChapterCopy({
-  paragraphs,
-  fullWidth = false,
-}: {
-  paragraphs: string[];
-  fullWidth?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        "space-y-4 border-l border-current/25 pl-5",
-        "text-sm leading-relaxed opacity-85 sm:text-base",
-        fullWidth ? "w-full max-w-none" : "max-w-lg",
-      ].join(" ")}
-    >
-      {paragraphs.map((paragraph, index) => (
-        <p key={`${paragraph}-${index}`}>
-          {paragraph}
-        </p>
-      ))}
-    </div>
-  );
-}
-
-function Chapter({
-  chapter,
-  index,
-}: {
-  chapter: Chapter;
-  index: number;
-}) {
-  const dark = chapter.tone === "dark";
-  const hasTitle = chapter.title.length > 0;
-
-  return (
-    <section
-      id={chapter.id}
-      className="relative"
-      style={{
-        zIndex: index + 1,
-      }}
-    >
-      {/* 
-        Wrapper ini menentukan panjang scroll.
-        Jadi chapter boleh lebih tinggi dari viewport.
-      */}
-      <div className="relative">
-        {/* ==============================
-            STICKY VISUAL LAYER
-        =============================== */}
-        <div
-          className={[
-            "sticky top-0 min-h-[100svh]",
-            "overflow-hidden border-t",
-            dark
-              ? "border-black/100 bg-[#10100f] text-stone-100"
-              : "border-black/15 bg-[#e9e5de] text-[#171614]",
-          ].join(" ")}
-        >
-          {/* Texture */}
-          <div
-            className="
-              pointer-events-none absolute inset-0
-              opacity-[0.035]
-              [background-image:radial-gradient(currentColor_0.7px,transparent_0.7px)]
-              [background-size:5px_5px]
-            "
-          />
-
-          {/* Content */}
-          <div
-            className="
-              relative mx-auto flex
-              min-h-[100svh]
-              max-w-[1600px]
-              flex-col
-              px-5 py-16
-              sm:px-10 sm:py-24
-              lg:py-28
-            "
-          >
-            {/* ==============================
-                HEADER
-            =============================== */}
-            <div>
-              <p className="text-[9px] font-medium uppercase tracking-[0.32em] opacity-65">
-                {chapter.eyebrow}
-              </p>
-            </div>
-
-            {/* ==============================
-                MAIN INTRO
-            =============================== */}
-            <div
-              className={[
-                "mt-14 grid gap-10",
-                "sm:mt-20",
-                "lg:items-end lg:gap-16",
-                hasTitle
-                  ? "lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,0.55fr)]"
-                  : "grid-cols-1",
-              ].join(" ")}
-            >
-              {/* TITLE */}
-              {hasTitle && (
-                <motion.h2
-                  initial={{
-                    opacity: 0,
-                    y: 28,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.3,
-                  }}
-                  transition={{
-                    duration: 0.7,
-                    ease: "easeOut",
-                  }}
-                  className="
-                    font-serif
-                    text-[clamp(3.4rem,8.2vw,8.5rem)]
-                    leading-[0.78]
-                    tracking-normal
-                  "
-                >
-                  {chapter.title.map((line) => (
-                    <span
-                      key={line}
-                      className="block"
-                    >
-                      {line}
-                    </span>
-                  ))}
-                </motion.h2>
-              )}
-
-              {/* DESCRIPTION */}
-              {chapter.description.length > 0 && (
-                <ChapterCopy
-                  paragraphs={chapter.description}
-                  fullWidth={!hasTitle}
-                />
-              )}
-            </div>
-
-            {/* ==============================
-                GALLERY
-            =============================== */}
-            {chapter.images.length > 0 && (
-              <div
-                className="
-                  mt-14
-                  sm:mt-20
-                  lg:mt-24
-                "
-              >
-                {chapter.galleryFirst && (
-                  <p className="mb-5 px-5 text-[9px] uppercase tracking-[0.32em] opacity-55 sm:px-10">
-                    Klik Gambar Untuk Melihat
-                  </p>
-                )}
-
-                <HorizontalGallery
-                  images={chapter.images}
-                  dark={dark}
-                />
-              </div>
-            )}
-
-            {/* ==============================
-                SECONDARY STORY
-            =============================== */}
-            {chapter.story && (
-              <div
-                className="
-                  mt-24
-                  pb-20
-                  sm:mt-32
-                  sm:pb-24
-                  lg:mt-40
-                  lg:pb-32
-                "
-              >
-                <div
-                  className="space-y-10"
-                >
-                  {/* Story label */}
-                    <p
-                      className="
-                        text-[9px]
-                        uppercase
-                        tracking-[0.32em]
-                        opacity-45
-                      "
-                    >
-                      {chapter.story.eyebrow ?? "Continued"}
-                    </p>
-
-                  {/* Story text */}
-                  <div className="w-full lg:max-w-[80%]">
-                  <ChapterCopy
-                    paragraphs={chapter.story.paragraphs}
-                    fullWidth
-                  />
-                  </div>
-                </div>
-              </div>
-            )}
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: reduceMotion ? 0 : 0.55, delay: reduceMotion ? 0 : 0.18 }} className="mt-11 grid max-w-3xl gap-5 border-l-2 border-current pl-5 text-sm leading-7 opacity-80 sm:text-base">
+              {chapter.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </motion.div>
+            {chapter.images.length > 0 && <Gallery images={chapter.images} palette={palette} />}
+            {chapter.story && <div className="mt-14 max-w-3xl border-t-2 border-current pt-5 sm:mt-20"><p className="text-[10px] font-bold uppercase tracking-[.2em] opacity-60">{chapter.story.eyebrow ?? "Catatan lanjutan"}</p><div className="mt-6 grid gap-5 text-sm leading-7 opacity-80 sm:text-base">{chapter.story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div>}
           </div>
         </div>
       </div>
@@ -303,23 +96,24 @@ function Chapter({
 }
 
 export default function TimelineStory() {
+  const reduceMotion = useReducedMotion();
   return (
-    <main className="relative overflow-clip bg-[#10100f] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,118,0.1),rgba(255,255,255,0))]">
-      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#10100f] px-5 text-[#171614]">
-        <div className="absolute inset-0 opacity-[0.045] [background-image:radial-gradient(#171614_0.7px,transparent_0.7px)] [background-size:5px_5px]" />
-        <p className="absolute left-5 top-8 text-[9px] text-[#f5f5f4] uppercase tracking-[0.32em] sm:left-10">My Journey</p>
-        <p className="absolute right-5 top-8 text-[9px] text-[#f5f5f4] uppercase tracking-[0.32em] sm:right-10">01</p>
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: "easeOut" }} className="relative max-w-4xl text-center">
-          <p className="mb-5 text-[9px] text-[#f5f5f4] uppercase tracking-[0.42em]">Welcome to</p>
-          <h1 className="font-serif text-[#f5f5f4] text-[clamp(4rem,10.5vw,11rem)] leading-none tracking-normal">MY JOURNEY</h1>
-          <p className="mx-auto mt-7 max-w-xs text-xs text-[#f5f5f4] leading-relaxed sm:text-sm">Sebuah perjalanan tentang bagaimana saya menemukan, mempelajari, dan membangun hal-hal yang saya sukai.</p>
-          <a href="#school" className="mt-14 inline-flex flex-col items-center gap-3 text-[9px] text-[#f5f5f4] uppercase tracking-[0.28em] transition-opacity hover:opacity-55"><span className="h-11 w-px bg-current/50" />Scroll</a>
-        </motion.div>
+    <main className="overflow-hidden bg-[#18212f]">
+      <section className="relative grid min-h-[100svh] overflow-hidden bg-[#d9e6ff] px-5 py-20 text-[#18212f] sm:px-9 lg:px-14">
+        <div className="pointer-events-none absolute -left-36 -top-24 h-[34rem] w-[34rem] rounded-full bg-[#a8eb83] opacity-65 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-28 right-0 h-[32rem] w-[32rem] rounded-full bg-[#ff9c84] opacity-55 blur-3xl" />
+        <div className="relative mx-auto flex w-full max-w-[1440px] flex-col justify-between border-y-2 border-[#18212f] py-5">
+          <div className="flex justify-between text-[10px] font-bold uppercase tracking-[.2em]"><span>Jejak digital</span><span>01 / 09</span></div>
+          <motion.div initial={{ opacity: 0, y: reduceMotion ? 0 : 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.8 }} className="py-14 sm:py-20">
+            <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#4569c9]">Sebuah catatan perjalanan</p>
+            <h1 className="mt-7 max-w-6xl font-serif text-[clamp(4.6rem,13vw,12rem)] leading-[.75] tracking-[-.08em]">Bukan jalan<br /><span className="italic text-[#4569c9]">yang lurus.</span></h1>
+            <p className="mt-12 max-w-xl border-l-2 border-[#18212f] pl-5 text-base leading-7 text-[#4e5b70]">Dari ruang kelas, layar timeline, hingga baris kode—ini potongan hal-hal yang membentuk cara saya melihat dan membuat sesuatu.</p>
+          </motion.div>
+          <a href={`#${chapters[0]?.id ?? "school"}`} className="inline-flex w-fit items-center gap-3 text-[10px] font-bold uppercase tracking-[.18em] hover:text-[#4569c9]"><span className="grid h-9 w-9 place-items-center rounded-full border-2 border-current"><ArrowDown className="h-4 w-4" /></span> Mulai membaca</a>
+        </div>
       </section>
-
-      {chapters.map((chapter, index) => <Chapter key={chapter.id} chapter={chapter} index={index} />)}
-
-      <footer className="relative z-10 bg-[#10100f] px-5 py-14 text-center text-[9px] uppercase tracking-[0.28em] text-stone-400 sm:px-10">The end of journey, but the beginning of more.</footer>
+      {chapters.map((chapter, index) => <ChapterCard key={chapter.id} chapter={chapter} index={index} />)}
+      <footer className="bg-[#18212f] px-5 py-14 text-center text-[10px] font-bold uppercase tracking-[.2em] text-[#d9e6ff] sm:px-9">Satu bab selesai, ruang untuk bab berikutnya tetap terbuka.</footer>
     </main>
   );
 }
