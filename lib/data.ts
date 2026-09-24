@@ -253,41 +253,303 @@ export const skills = [
   }
 ];
 
-export const timeline = [
+type GalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  detail: string;
+};
+
+type Chapter = {
+  id: string;
+  eyebrow: string;
+  title: string[];
+  description: string[];
+  tone: "light" | "dark";
+  images: GalleryImage[];
+  galleryFirst?: boolean;
+
+  story?: {
+    eyebrow?: string;
+    paragraphs: string[];
+  };
+};
+
+export const chapters: Chapter[] = [
   {
-    date: "2026 - Sekarang ~(6 Bulan)",
-    title: "Design Graphics",
-    description:
-      "Dari video, saya mulai tertarik pada sisi visual yang lebih luas. Menggunakan Canva dan Photoshop, saya mempelajari prinsip-prinsip dasar desain seperti tipografi, komposisi, dan hierarki visual — fondasi yang membentuk cara saya melihat dan menciptakan sebuah karya.",
-    borderColor: "rgba(168, 85, 247, 0.25)", // Ungu
-    accentColor: "text-purple-400 group-hover:text-purple-300",
-    glowColor: "rgba(168, 85, 247, 0.12)"
+    id: "school",
+    eyebrow: "01 / SCHOOL JOURNEY",
+    title: ["SMA", "JOURNEY"],
+    description: [
+      "Masa SMA adalah awal perjalanan saya mengenal dunia yang lebih luas. Di sini saya belajar banyak hal, bukan hanya dari pelajaran di kelas, tetapi juga dari organisasi, pertemanan, dan berbagai pengalaman.",
+
+      "Bagian pertama ini menjadi pembuka tentang bagaimana saya mulai memahami ritme belajar, tanggung jawab, dan cara melihat masa depan.",
+    ],
+    tone: "dark",
+    images: [
+      {
+        src: "/profile.jpg",
+        alt: "School portrait memory",
+        caption: "Growing through people",
+        detail:
+          "Pertemanan dan lingkungan memberi banyak pelajaran yang tidak tertulis di buku.",
+      },
+      {
+        src: "/Photo1.jpeg",
+        alt: "School group memory",
+        caption: "Shared moments",
+        detail:
+          "Cerita sekolah yang sederhana, tapi cukup kuat untuk diingat lama.",
+      },
+      {
+        src: "/icarusPotrait.jpg",
+        alt: "Creative direction memory",
+        caption: "Choosing direction",
+        detail:
+          "Mulai memahami apa yang saya sukai dan ke mana saya ingin bergerak.",
+      },
+    ], 
+
+    galleryFirst: true,
+    story: {
+      eyebrow: "Sedikit Bercerita",
+      paragraphs: [
+        "Momen di luar kelas membentuk sisi lain dari perjalanan saya. Pertemanan, kegiatan, dan pengalaman kecil membuat saya belajar membaca situasi dan mengambil keputusan. Momen di luar kelas membentuk sisi lain dari perjalanan saya. Pertemanan, kegiatan, dan pengalaman kecil membuat saya belajar membaca situasi dan mengambil keputusan. Momen di luar kelas membentuk sisi lain dari perjalanan saya. Pertemanan, kegiatan, dan pengalaman kecil membuat saya belajar membaca situasi dan mengambil keputusan.",
+        "Di fase ini saya mulai merasakan bahwa proses bertumbuh tidak selalu terlihat besar, tetapi pelan-pelan mengubah arah langkah.",
+        "Ada banyak hal sederhana yang pada saat itu terasa biasa saja, tetapi ketika dilihat kembali justru menjadi bagian penting dari cara saya berkembang.",
+        "Dari sana saya mulai memahami bahwa perjalanan tidak selalu tentang seberapa cepat seseorang sampai pada tujuan, tetapi tentang apa yang berubah selama perjalanan tersebut.",
+      ],
+    },
   },
+
+  /* =========================================
+     KINETIC
+  ========================================== */
+
   {
-    date: "2024 - 2026 ~(2 Tahun)",
-    title: "Motion Graphics",
-    description:
-      "Saya mendalami motion graphics menggunakan After Effects dan Alight Motion. Belajar menggerakkan elemen visual dengan memperhatikan timing dan transisi — karena bagi saya, animasi yang baik bukan sekadar bergerak, tapi bercerita.",
-    borderColor: "rgba(236, 72, 153, 0.25)", // Pink
-    accentColor: "text-pink-400 group-hover:text-pink-300",
-    glowColor: "rgba(236, 72, 153, 0.12)"
+    id: "kinetic",
+    eyebrow: "04 / KINETIC GRAPHIC / MOTION",
+    title: ["KINETIC", "GRAPHIC"],
+    description: [
+      "Kinetic typography dan motion design adalah cara saya bercerita melalui gerakan, ritme, dan visual. Saya menikmati proses mengubah ide menjadi animasi yang komunikatif dan estetis.",
+      "Bagian ini berfokus pada rasa gerak: bagaimana teks, timing, dan komposisi bisa membuat pesan terasa lebih hidup.",
+    ],
+    tone: "dark",
+    images: [
+      {
+        src: "/thumbnail/curhat.png",
+        alt: "Motion project Curhat",
+        caption: "Move with purpose",
+        detail:
+          "Eksperimen visual tentang ritme, kontras, dan pesan.",
+      },
+      {
+        src: "/thumbnail/multoTn.png",
+        alt: "Motion project Multo",
+        caption: "Kinetic type study",
+        detail:
+          "Tipografi yang bergerak untuk membangun rasa dan fokus.",
+      },
+      {
+        src: "/thumbnail/ramaisepi.png",
+        alt: "Motion project Ramai Sepi",
+        caption: "Keep moving forward",
+        detail:
+          "Potongan studi motion tentang energi dan pertumbuhan.",
+      },
+    ],
   },
+
+  /* =========================================
+     KINETIC PROCESS
+  ========================================== */
+
   {
-    date: "2024 - 2026 ~(2 Tahun)",
-    title: "Web Design",
-    description:
-      "Ketertarikan saya terhadap cara kerja web mendorong saya untuk mulai belajar dari nol. Dimulai dari HTML & CSS, kemudian berkembang ke JavaScript, Tailwind CSS, TypeScript, PHP, dan Python. Perjalanan ini mengajarkan saya bahwa membangun sebuah website bukan hanya soal kode, tapi juga soal pengalaman pengguna.",
-    borderColor: "rgba(20, 184, 166, 0.25)", // Teal
-    accentColor: "text-teal-400 group-hover:text-teal-300",
-    glowColor: "rgba(20, 184, 166, 0.12)"
+    id: "kinetic-process",
+    eyebrow: "05 / KINETIC GRAPHIC / PROCESS",
+    title: ["MOTION", "PROCESS"],
+    description: [
+      "Di balik visual yang bergerak, ada proses memilih ritme, kontras, dan arah mata. Saya belajar bahwa motion design bukan sekadar membuat objek berpindah, tetapi mengatur perhatian.",
+      "Setiap frame menjadi ruang kecil untuk menyusun energi, emosi, dan pesan agar terasa tepat.",
+    ],
+    tone: "dark",
+    galleryFirst: true,
+    images: [
+      {
+        src: "/thumbnail/multoTn.png",
+        alt: "Motion typography study",
+        caption: "Kinetic type study",
+        detail:
+          "Eksperimen tipografi yang mencoba menjaga fokus tanpa kehilangan rasa.",
+      },
+      {
+        src: "/thumbnail/ramaisepi.png",
+        alt: "Motion rhythm study",
+        caption: "Keep moving forward",
+        detail:
+          "Latihan ritme visual tentang konsistensi dan pertumbuhan.",
+      },
+      {
+        src: "/thumbnail/curhat.png",
+        alt: "Motion contrast study",
+        caption: "Move with purpose",
+        detail:
+          "Mencari cara agar gerakan terasa punya alasan, bukan hanya ramai.",
+      },
+    ],
   },
+
+  /* =========================================
+     WEB
+  ========================================== */
+
   {
-    date: "2026 - Sekarang ~(4 Bulan)",
-    title: "Cyber Security",
-    description:
-      "Saat ini saya sedang meraba lebih dalam tentang ethical hacking dan penetration testing, karena saya percaya bahwa memahami cara kerja serangan adalah kunci untuk membangun pertahanan yang efektif. Btw saya masih pemula banget, jadi jangan terlalu berharap banyak ya.",
-    borderColor: "rgba(245, 158, 11, 0.25)", // Amber/Kuning Oranye
-    accentColor: "text-amber-400 group-hover:text-amber-300",
-    glowColor: "rgba(245, 158, 11, 0.12)"
-  }
+    id: "web",
+    eyebrow: "06 / WEB DEVELOPMENT",
+    title: ["WEB", "DEVELOPMENT"],
+    description: [
+      "Saya membangun aplikasi web dengan fokus pada performa, pengalaman pengguna, dan arsitektur yang bersih.",
+      "Bagian ini melihat frontend sebagai pengalaman: tempat visual, interaksi, dan kebutuhan pengguna bertemu.",
+    ],
+    tone: "dark",
+    images: [
+      {
+        src: "/thumbnail/somepleasure.png",
+        alt: "Website project",
+        caption: "Project dashboard",
+        detail:
+          "Antarmuka yang menyatukan informasi, alur, dan kebutuhan pengguna.",
+      },
+      {
+        src: "/Icarus.png",
+        alt: "Visual web project",
+        caption: "Creative interface",
+        detail:
+          "Mencari titik temu antara ekspresi visual dan fungsi.",
+      },
+      {
+        src: "/fallinIcarus.jpg",
+        alt: "Website visual",
+        caption: "Digital product study",
+        detail:
+          "Sebuah eksplorasi tampilan, sistem, dan pengalaman digital.",
+      },
+    ],
+  },
+
+  /* =========================================
+     SOFTWARE ENGINEERING
+  ========================================== */
+
+  {
+    id: "web-engineering",
+    eyebrow: "07 / SOFTWARE ENGINEERING",
+    title: ["SOFTWARE", "ENGINEERING"],
+    description: [
+      "Di balik tampilan, saya belajar menata struktur: komponen, data, state, logic, dan alur kerja yang bisa dikembangkan lagi.",
+      "Teknologi yang saya gunakan mencakup React, Next.js, TypeScript, Node.js, dan lainnya.",
+    ],
+    tone: "dark",
+    galleryFirst: true,
+    images: [
+      {
+        src: "/Icarus.png",
+        alt: "Creative web interface",
+        caption: "Creative interface",
+        detail:
+          "Mencari titik temu antara ekspresi visual dan fungsi.",
+      },
+      {
+        src: "/thumbnail/somepleasure.png",
+        alt: "Project dashboard interface",
+        caption: "Project dashboard",
+        detail:
+          "Membuat interface yang rapi dan mudah dibaca.",
+      },
+      {
+        src: "/fallinIcarus.jpg",
+        alt: "Digital product visual",
+        caption: "Digital product study",
+        detail:
+          "Eksplorasi tampilan, sistem, dan pengalaman digital.",
+      },
+    ],
+  },
+
+  /* =========================================
+     CYBER SECURITY
+  ========================================== */
+
+  {
+    id: "security",
+    eyebrow: "08 / CYBER SECURITY / MINDSET",
+    title: ["CYBER", "SECURITY"],
+    description: [
+      "Keamanan bukan hanya tentang tools, tetapi tentang cara berpikir. Saya tertarik memahami sistem, menemukan kerentanan, dan membangun solusi yang lebih aman.",
+      "Bagian ini berfokus pada cara membaca pola sistem, memahami alur data, dan melihat celah yang sering tidak terlihat.",
+    ],
+    tone: "light",
+    images: [
+      {
+        src: "/thumbnail/setiapwaktuTn.png",
+        alt: "Security study",
+        caption: "Read the system",
+        detail:
+          "Belajar melihat detail dan hubungan di balik sebuah sistem.",
+      },
+      {
+        src: "/falloficarus.svg",
+        alt: "Security diagram",
+        caption: "Security mindset",
+        detail:
+          "Keamanan yang baik dimulai dari pemahaman, bukan kepanikan.",
+      },
+      {
+        src: "/icarusDraw.jpg",
+        alt: "Security visual",
+        caption: "Build with care",
+        detail:
+          "Merancang dan membangun dengan perhatian pada ketahanan.",
+      },
+    ],
+  },
+
+  /* =========================================
+     SECURITY PRACTICE
+  ========================================== */
+
+  {
+    id: "security-practice",
+    eyebrow: "09 / CYBER SECURITY / PRACTICE",
+    title: ["SECURE", "BUILDING"],
+    description: [
+      "Saya ingin memahami keamanan dari dua sisi: bagaimana kerentanan muncul, dan bagaimana produk bisa dibangun dengan pertahanan yang lebih baik.",
+      "Saya terus belajar tentang offensive security, defensive security, networking, dan secure coding.",
+    ],
+    tone: "light",
+    galleryFirst: true,
+    images: [
+      {
+        src: "/falloficarus.svg",
+        alt: "Security diagram",
+        caption: "Security mindset",
+        detail:
+          "Keamanan yang baik dimulai dari pemahaman, bukan kepanikan.",
+      },
+      {
+        src: "/icarusDraw.jpg",
+        alt: "Secure build visual",
+        caption: "Build with care",
+        detail:
+          "Merancang dan membangun dengan perhatian pada ketahanan.",
+      },
+      {
+        src: "/thumbnail/setiapwaktuTn.png",
+        alt: "Security terminal study",
+        caption: "Read the system",
+        detail:
+          "Membiasakan diri membaca detail sebelum mengambil keputusan.",
+      },
+    ],
+  },
 ];

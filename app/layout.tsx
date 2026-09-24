@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Caveat } from "next/font/google";
+import { Inter, Caveat, Playfair_Display } from "next/font/google";
 import "./global.css";
 // 1. Impor komponen pembungkus transisi
 import { TerapkanTransisi } from "./providers"; 
 
-const inter = Inter({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-sans"
 });
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} ${caveat.variable} antialiased bg-[#0d0d0d] text-stone-50`}>
+      <body className={`${playfair.variable} ${caveat.variable} font-sans antialiased bg-[#0d0d0d] text-stone-50`}>
         {/* 2. Bungkus children di sini */}
         <TerapkanTransisi>
           {children}
