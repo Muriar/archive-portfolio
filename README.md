@@ -12,9 +12,6 @@ seringnya pake IG doang soalnya
 - `lib/` berisi data Website(jan dihack plis) dan pondasi motion yang saya gunakan pada website
 - `public` isinya gambar gambar keperluan website doang
 
-## WARNING
-diperbolehkan mengambil template namun, ketika melakukan perubahan atau management harap dilakukan dengan hati hati agar real code line tidak terdampak (karena saya belum membuat backup websitenya)
-
 ## Saran 
 penambahan background agar tidak menjadi kaku
 pergantian homePage menjadi playground
