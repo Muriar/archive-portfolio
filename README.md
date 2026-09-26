@@ -3,7 +3,7 @@
 portfolio dibuat menggunakan language Next.js, Tailwind CSS, and Framer Motion. bila menemukan bug atau memiliki saran boleh disampaikan ke DM instagram
 
 # STATUS
-on progress(berhenti)
+on progress(berhenti sebentar)
 
 # Social Media
 INSTAGRAM : @Qico.0
