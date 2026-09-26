@@ -41,7 +41,7 @@ export default function ContactPage() {
             </motion.h1>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.28 }} className="mt-14 grid max-w-xl gap-8 border-t-2 border-[#171717] pt-5 sm:grid-cols-[1fr_auto]">
-              <p className="text-base leading-7 text-[#4e4b46]">Punya proyek yang terasa seru, butuh teman berpikir, atau sekadar ingin menyapa? Kirim pesan. Saya selalu tertarik pada percakapan yang baik.</p>
+              <p className="text-base leading-7 text-[#4e4b46]">Punya proyek yang terasa seru, butuh teman berpikir, atau sekadar ingin menyapa? Kirimkan pesan. Saya selalu tertarik pada percakapan yang baik.</p>
               <span className="h-fit -rotate-3 bg-[#ffe366] px-3 py-2 text-center text-[10px] font-bold uppercase leading-4 tracking-[0.16em] shadow-[4px_4px_0_#171717]">Biasanya balas<br />dalam 1–2 hari</span>
             </motion.div>
 
