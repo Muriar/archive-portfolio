@@ -4,7 +4,7 @@ portfolio dibuat menggunakan language Next.js, Tailwind CSS, and Framer Motion. 
 
 # Social Media
 INSTAGRAM : @Qico.0
-seringnya pake IG doang soalnya
+seringnya pake IG
 
 ## Structure
 - `app/` menyimpan components dan sections setiap page
