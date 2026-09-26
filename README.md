@@ -1,7 +1,5 @@
 # Portfolio
 
-portfolio dibuat menggunakan language Next.js, Tailwind CSS, and Framer Motion. bila menemukan bug atau memiliki saran boleh disampaikan ke Instagram pribadi saya
-
 # STATUS
 on progress(berhenti sebentar)
 
