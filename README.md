@@ -7,7 +7,7 @@ on progress(berhenti sebentar)
 
 # Social Media
 INSTAGRAM : @Qico.0
-seringnya pake IG doang soalnya
+seringnya pake IG
 
 ## Saran 
 penambahan background agar tidak menjadi kaku
